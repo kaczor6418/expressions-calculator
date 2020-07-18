@@ -1,2 +1,1 @@
-const hello: string = 'Hello!';
-console.log(hello);
+export { App } from './App';
