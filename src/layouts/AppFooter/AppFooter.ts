@@ -1,4 +1,5 @@
-import {CONSTANTS} from "../../utils/CONSTANTS";
+import {CONSTANTS} from "../../common/CONSTANTS";
+import {KKWebComponent} from "../../common/interfaces";
 
 const template: string = `
 <footer>
@@ -6,7 +7,7 @@ const template: string = `
 </footer>
 `;
 
-export class AppFooter extends HTMLElement {
+export class AppFooter extends HTMLElement implements KKWebComponent {
     public static TAG = `${CONSTANTS.TAG_PREFIX}-app-footer`;
 
     public readonly shadowRoot!: ShadowRoot;
@@ -15,6 +16,9 @@ export class AppFooter extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = template;
+    }
+
+    setUpElements(): void {
     }
 }
 customElements.define(AppFooter.TAG, AppFooter);

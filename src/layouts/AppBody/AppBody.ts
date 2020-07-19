@@ -1,4 +1,5 @@
-import {CONSTANTS} from "../../utils/CONSTANTS";
+import {CONSTANTS} from "../../common/CONSTANTS";
+import {KKWebComponent} from "../../common/interfaces";
 
 const template: string = `
 <main>
@@ -6,7 +7,7 @@ const template: string = `
 </main>
 `;
 
-export class AppBody extends HTMLElement {
+export class AppBody extends HTMLElement implements KKWebComponent {
     public static TAG = `${CONSTANTS.TAG_PREFIX}-app-body`;
 
     public readonly shadowRoot!: ShadowRoot;
@@ -15,6 +16,9 @@ export class AppBody extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = template;
+    }
+
+    setUpElements(): void {
     }
 }
 customElements.define(AppBody.TAG, AppBody);
