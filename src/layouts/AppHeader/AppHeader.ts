@@ -2,10 +2,11 @@ import {CONSTANTS} from "../../common/CONSTANTS";
 import {KKWebComponent} from "../../common/interfaces";
 import {TAppHeader} from "./interfaces/TAppHeader";
 import {ObservedAttributes} from "./interfaces/ObservedAttributes";
+import {Utils} from "../../common/Utils";
 
 const template: string = `
 <header>
-  <h1 part="heading"></h1>
+  <h1 class="heading"></h1>
 </header>
 `;
 
@@ -22,6 +23,7 @@ export class AppHeader extends HTMLElement implements KKWebComponent, TAppHeader
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = template;
         this.setUpElements();
+        Utils.injectGlobalStyles(this.shadowRoot);
     }
 
     setUpElements(): void {

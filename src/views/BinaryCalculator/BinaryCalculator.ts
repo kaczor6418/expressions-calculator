@@ -1,6 +1,7 @@
 import {CONSTANTS} from "../../common/CONSTANTS";
 import {KKWebComponent} from "../../common/interfaces";
 import {TAppHeader} from "../../layouts/AppHeader/interfaces/TAppHeader";
+import {Utils} from "../../common/Utils";
 
 const template: string = `
 <kk-app-header></kk-app-header>
@@ -21,6 +22,7 @@ export class BinaryCalculator extends HTMLElement implements KKWebComponent {
         this.shadowRoot.innerHTML = template;
         this.setUpElements();
         this.setUpAppHeader();
+        Utils.injectGlobalStyles(this.shadowRoot);
     }
 
     setUpElements(): void {

@@ -1,5 +1,6 @@
 import {CONSTANTS} from "../../common/CONSTANTS";
 import {KKWebComponent} from "../../common/interfaces";
+import {Utils} from "../../common/Utils";
 
 const template: string = `
 <div>
@@ -16,6 +17,7 @@ export class Button extends HTMLElement implements KKWebComponent {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = template;
+        Utils.injectGlobalStyles(this.shadowRoot);
     }
 
     setUpElements(): void {
