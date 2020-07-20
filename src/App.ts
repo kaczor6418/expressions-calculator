@@ -2,10 +2,7 @@ export * from './views/BinaryCalculator/UsedComponents';
 import {CONSTANTS} from "./common/CONSTANTS";
 
 const template: string = `
-<header>
-<style></style>
-  <kk-binary-calculator></kk-binary-calculator>
-</header>
+<kk-binary-calculator></kk-binary-calculator>
 `;
 
 export class App extends HTMLElement {
@@ -17,9 +14,6 @@ export class App extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = template;
-        let someStyleSheet = new CSSStyleSheet();
-        someStyleSheet.insertRule("h1 { color: green }");
-        this.shadowRoot.styleSheets
     }
 }
 customElements.define(App.TAG, App);
