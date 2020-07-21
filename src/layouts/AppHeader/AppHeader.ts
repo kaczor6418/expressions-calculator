@@ -1,16 +1,17 @@
 import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../../common/interfaces";
 import {TAppHeader} from "./interfaces/TAppHeader";
 import {ObservedAttributes} from "./interfaces/ObservedAttributes";
-import {Utils} from "../../common/Utils";
+import {KKWebComponent} from "../../components/KKWebComponent";
+import {style} from "./AppHeaderStyle";
 
 const template: string = `
+<style>${style}</style>
 <header>
   <h1 class="heading"></h1>
 </header>
 `;
 
-export class AppHeader extends HTMLElement implements KKWebComponent, TAppHeader {
+export class AppHeader extends KKWebComponent implements TAppHeader {
     public static TAG = `${CONSTANTS.TAG_PREFIX}-app-header`;
     public static observedAttributes: ObservedAttributes[] = [ObservedAttributes.TITLE];
 
@@ -19,11 +20,8 @@ export class AppHeader extends HTMLElement implements KKWebComponent, TAppHeader
     private header!: HTMLHeadingElement;
 
     constructor() {
-        super();
-        this.attachShadow({mode: 'open'});
-        this.shadowRoot.innerHTML = template;
+        super(template);
         this.setUpElements();
-        Utils.injectGlobalStyles(this.shadowRoot);
     }
 
     setUpElements(): void {

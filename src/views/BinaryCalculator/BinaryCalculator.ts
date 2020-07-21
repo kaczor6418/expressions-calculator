@@ -1,7 +1,6 @@
 import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../../common/interfaces";
 import {TAppHeader} from "../../layouts/AppHeader/interfaces/TAppHeader";
-import {Utils} from "../../common/Utils";
+import {KKWebComponent} from "../../components/KKWebComponent";
 
 const template: string = `
 <kk-app-header></kk-app-header>
@@ -9,7 +8,7 @@ const template: string = `
 <kk-app-footer></kk-app-footer>
 `;
 
-export class BinaryCalculator extends HTMLElement implements KKWebComponent {
+export class BinaryCalculator extends KKWebComponent {
     public static TAG = `${CONSTANTS.TAG_PREFIX}-binary-calculator`;
 
     public readonly shadowRoot!: ShadowRoot;
@@ -17,15 +16,12 @@ export class BinaryCalculator extends HTMLElement implements KKWebComponent {
     private header!: TAppHeader;
 
     constructor() {
-        super();
-        this.attachShadow({mode: 'open'});
-        this.shadowRoot.innerHTML = template;
-        this.setUpElements();
+        super(template);
+        this.getComponentsReference();
         this.setUpAppHeader();
-        Utils.injectGlobalStyles(this.shadowRoot);
     }
 
-    setUpElements(): void {
+    private getComponentsReference(): void {
         this.header = <TAppHeader><unknown>this.shadowRoot.querySelector('kk-app-header');
     }
 

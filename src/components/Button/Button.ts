@@ -1,6 +1,5 @@
 import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../../common/interfaces";
-import {Utils} from "../../common/Utils";
+import {KKWebComponent} from "../KKWebComponent";
 
 const template: string = `
 <div>
@@ -8,16 +7,13 @@ const template: string = `
 </div>
 `;
 
-export class Button extends HTMLElement implements KKWebComponent {
+export class Button extends KKWebComponent {
     public static TAG = `${CONSTANTS.TAG_PREFIX}-button`;
 
     public readonly shadowRoot!: ShadowRoot;
 
     constructor() {
-        super();
-        this.attachShadow({mode: 'open'});
-        this.shadowRoot.innerHTML = template;
-        Utils.injectGlobalStyles(this.shadowRoot);
+        super(template);
     }
 
     setUpElements(): void {
