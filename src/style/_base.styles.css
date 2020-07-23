@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
-@import "variables/_base.color.css";
-@import "variables/_base.text.css";
-@import "variables/_base.timing.functions.css";
-@import "variables/_base.transition.durations.css";
+@import "variables/_base.variables.css";
 
 :root {
     background: var(--color-primary);
