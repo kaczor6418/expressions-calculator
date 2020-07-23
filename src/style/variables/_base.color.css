@@ -1,0 +1,10 @@
+:root {
+    --color-primary: #272727;
+    --color-primary-dark: #202124;
+    --color-primary-light: #333333;
+
+    --color-accent-1: #3FBA84;
+    --color-accent-2: #263238;
+
+    --color-text-on-primary: #FFFFFF;
+}

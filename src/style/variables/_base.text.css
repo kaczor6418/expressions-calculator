@@ -1,0 +1,8 @@
+:root {
+    --font-size-base: 14px;
+    --font-weight-bold: bold;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-semibold: 500;
+    --line-height: 1.45;
+}
