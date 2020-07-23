@@ -1,6 +1,6 @@
 // language=CSS
 export const style: string = `
-.heading {
+h1 {
     color: var(--color-accent-1);
 }
 `;
