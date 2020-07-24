@@ -1,6 +1,9 @@
 // language=CSS
 export const style: string = `
-h1 {
-    color: var(--color-accent-1);
-}
+    header {
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
 `;
