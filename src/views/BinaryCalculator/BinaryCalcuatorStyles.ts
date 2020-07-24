@@ -1,7 +1,7 @@
 //language=CSS
 export const style: string = `
     main {
-        min-height: 100vh;
+        height: 100vh;
         display: grid;
         grid-template-rows: [app-header]12fr [app-body]70fr [app-footer]18fr;
         grid-gap: var(--spacing-xl);

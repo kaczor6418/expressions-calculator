@@ -1,2 +1,2 @@
 export { App } from './App';
-import './style/main.css'
+import './style/main.css';

@@ -1,5 +1,5 @@
 import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../KKWebComponent";
+import {KKWebComponent} from "../KKWebComponent/KKWebComponent";
 
 const template: string = `
 <div>
@@ -16,7 +16,5 @@ export class Button extends KKWebComponent {
         super(template);
     }
 
-    setUpElements(): void {
-    }
 }
 customElements.define(Button.TAG, Button);

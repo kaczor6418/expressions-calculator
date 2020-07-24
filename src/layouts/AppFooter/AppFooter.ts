@@ -1,5 +1,5 @@
 import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../../components/KKWebComponent";
+import {KKWebComponent} from "../../components/KKWebComponent/KKWebComponent";
 
 const template: string = `
 <footer>
@@ -14,9 +14,6 @@ export class AppFooter extends KKWebComponent {
 
     constructor() {
         super(template);
-    }
-
-    setUpElements(): void {
     }
 }
 customElements.define(AppFooter.TAG, AppFooter);

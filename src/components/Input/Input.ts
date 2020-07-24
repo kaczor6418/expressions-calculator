@@ -1,5 +1,5 @@
 import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../KKWebComponent";
+import {KKWebComponent} from "../KKWebComponent/KKWebComponent";
 
 const template: string = `
 <div>
@@ -14,9 +14,6 @@ export class Input extends KKWebComponent {
 
     constructor() {
         super(template);
-    }
-
-    setUpElements(): void {
     }
 }
 customElements.define(Input.TAG, Input);

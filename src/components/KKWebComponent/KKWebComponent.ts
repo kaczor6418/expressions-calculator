@@ -1,4 +1,5 @@
-import {Utils} from "../common/Utils";
+import {Utils} from "../../common/Utils";
+
 
 export abstract class KKWebComponent extends HTMLElement {
     public readonly shadowRoot!: ShadowRoot;
@@ -8,5 +9,9 @@ export abstract class KKWebComponent extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = template;
         Utils.injectGlobalStyles(this.shadowRoot);
+    }
+
+    protected getElementsReferences(): void {
+
     }
 }

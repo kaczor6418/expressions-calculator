@@ -1,5 +1,5 @@
 import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../KKWebComponent";
+import {KKWebComponent} from "../KKWebComponent/KKWebComponent";
 
 const template: string = `
 <div>
@@ -15,9 +15,6 @@ export class BinaryExpression extends KKWebComponent {
 
     constructor() {
         super(template);
-    }
-
-    setUpElements(): void {
     }
 }
 customElements.define(BinaryExpression.TAG, BinaryExpression);
