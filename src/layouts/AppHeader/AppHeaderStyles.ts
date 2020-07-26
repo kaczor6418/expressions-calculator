@@ -1,5 +1,5 @@
 // language=CSS
-export const style: string = `
+export const appHeaderStyles = `
     header {
         height: 100%;
         display: flex;

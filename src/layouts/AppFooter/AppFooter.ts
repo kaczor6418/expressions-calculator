@@ -1,5 +1,5 @@
-import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../../components/KKWebComponent/KKWebComponent";
+import { CONSTANTS } from '../../common/CONSTANTS';
+import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
 
 const template: string = `
 <footer>
@@ -8,7 +8,7 @@ const template: string = `
 `;
 
 export class AppFooter extends KKWebComponent {
-    public static TAG = `${CONSTANTS.TAG_PREFIX}-app-footer`;
+    public static TAG: string = `${CONSTANTS.TAG_PREFIX}-app-footer`;
 
     public readonly shadowRoot!: ShadowRoot;
 

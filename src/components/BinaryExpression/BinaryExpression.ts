@@ -1,5 +1,5 @@
-import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../KKWebComponent/KKWebComponent";
+import { CONSTANTS } from '../../common/CONSTANTS';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 
 const template: string = `
 <div>
@@ -9,7 +9,7 @@ const template: string = `
 `;
 
 export class BinaryExpression extends KKWebComponent {
-    public static TAG = `${CONSTANTS.TAG_PREFIX}-binary-expression`;
+    public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-expression`;
 
     public readonly shadowRoot!: ShadowRoot;
 

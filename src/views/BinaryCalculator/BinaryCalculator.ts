@@ -1,9 +1,9 @@
-import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../../components/KKWebComponent/KKWebComponent";
-import {style} from "./BinaryCalcuatorStyles";
+import { CONSTANTS } from '../../common/CONSTANTS';
+import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
+import { binaryCalculatorStyles } from './BinaryCalcuatorStyles';
 
 const template: string = `
-<style>${style}</style>
+<style>${binaryCalculatorStyles}</style>
 <main>
   <kk-app-header>
     <b slot="prepend">Prepend</b>
@@ -16,7 +16,7 @@ const template: string = `
 `;
 
 export class BinaryCalculator extends KKWebComponent {
-    public static TAG = `${CONSTANTS.TAG_PREFIX}-binary-calculator`;
+    public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-calculator`;
 
     public readonly shadowRoot!: ShadowRoot;
 

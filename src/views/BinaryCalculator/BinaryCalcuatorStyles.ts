@@ -1,5 +1,5 @@
 //language=CSS
-export const style: string = `
+export const binaryCalculatorStyles: string = `
     main {
         height: 100vh;
         display: grid;

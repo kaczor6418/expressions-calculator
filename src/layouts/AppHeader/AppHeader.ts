@@ -1,9 +1,9 @@
-import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../../components/KKWebComponent/KKWebComponent";
-import {style} from "./AppHeaderStyle";
+import { CONSTANTS } from '../../common/CONSTANTS';
+import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
+import { appHeaderStyles } from './AppHeaderStyles';
 
 const template: string = `
-<style>${style}</style>
+<style>${appHeaderStyles}</style>
 <header>
   <slot name="prepend"></slot>
   <slot name="center"></slot>
@@ -12,17 +12,12 @@ const template: string = `
 `;
 
 export class AppHeader extends KKWebComponent {
-    public static TAG = `${CONSTANTS.TAG_PREFIX}-app-header`;
+    public static TAG: string = `${CONSTANTS.TAG_PREFIX}-app-header`;
 
     public readonly shadowRoot!: ShadowRoot;
 
     constructor() {
         super(template);
-        this.setUpElements();
     }
-
-    setUpElements(): void {
-    }
-
 }
 customElements.define(AppHeader.TAG, AppHeader);

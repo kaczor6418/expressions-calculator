@@ -1,5 +1,5 @@
-import {CONSTANTS} from "../../common/CONSTANTS";
-import {KKWebComponent} from "../KKWebComponent/KKWebComponent";
+import { CONSTANTS } from '../../common/CONSTANTS';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 
 const template: string = `
 <div>
@@ -8,7 +8,7 @@ const template: string = `
 `;
 
 export class Input extends KKWebComponent {
-    public static TAG = `${CONSTANTS.TAG_PREFIX}-input`;
+    public static TAG: string = `${CONSTANTS.TAG_PREFIX}-input`;
 
     public readonly shadowRoot!: ShadowRoot;
 

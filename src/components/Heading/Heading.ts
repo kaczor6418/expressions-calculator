@@ -1,7 +1,6 @@
-import {KKWebComponent} from "../KKWebComponent/KKWebComponent";
-import {CONSTANTS} from "../../common/CONSTANTS";
-import {headingStyles} from "./HeadingStyles";
-
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
+import { CONSTANTS } from '../../common/CONSTANTS';
+import { headingStyles } from './HeadingStyles';
 
 const template: string = `
 <style>${headingStyles}</style>
@@ -9,7 +8,7 @@ const template: string = `
 `;
 
 export class Heading extends KKWebComponent {
-    public static TAG = `${CONSTANTS.TAG_PREFIX}-heading`;
+    public static TAG: string = `${CONSTANTS.TAG_PREFIX}-heading`;
 
     public readonly shadowRoot!: ShadowRoot;
 
