@@ -15,4 +15,8 @@ export namespace Utils {
                 console.error('Failed to load global styles:', err.message, err);
             });
     }
+
+    export function isNullOrUndefined(value: unknown): value is Extract<null | undefined, null | undefined> {
+        return value == null;
+    }
 }
