@@ -1,4 +1,5 @@
 import { Utils } from '../common/Utils';
+import { ParseToElementError } from '../errors/ParseToElementError';
 
 export class StringElementConverter {
     private readonly domParser: DOMParser;
@@ -12,6 +13,6 @@ export class StringElementConverter {
         if (!Utils.isNullOrUndefined(parsedString)) {
             return <T>(<unknown>parsedString);
         }
-        throw new Error(`This xml string ${xmlString} is not parsable to Node`);
+        throw new ParseToElementError(`This xml string ${xmlString} is not parsable to Node`);
     }
 }

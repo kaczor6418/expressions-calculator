@@ -4,6 +4,7 @@ import { IconId } from './IconId';
 import logo from '../assets/icons/logo.svg';
 import { Utils } from './Utils';
 import { StringElementConverter } from '../converters/StringElementConverter';
+import { IconNotFoundError } from '../errors/IconNotFoundError';
 
 export namespace IconDefinitions {
     const stringElementConverter: StringElementConverter = new StringElementConverter();
@@ -15,6 +16,6 @@ export namespace IconDefinitions {
         if (!Utils.isNullOrUndefined(icon)) {
             return icon;
         }
-        throw new Error(`Icon: ${iconId} doesn't exist in icon definitions`);
+        throw new IconNotFoundError(`Icon: ${iconId} doesn't exist in icon definitions`);
     }
 }
