@@ -9,9 +9,9 @@ const template: string = `
 <style>${binaryCalculatorStyles}</style>
 <main>
   <kk-app-header>
-    <kk-icon slot="prepend"></kk-icon>
+    <kk-icon id="logo" slot="prepend"></kk-icon>
     <kk-heading slot="center">Binary calculator</kk-heading>
-    <b slot="append">Append</b>
+    <kk-icon id="github" slot="append"></kk-icon>
   </kk-app-header>
   <kk-app-body></kk-app-body>
   <kk-app-footer></kk-app-footer>
@@ -23,7 +23,8 @@ export class BinaryCalculator extends KKWebComponent {
 
     public readonly shadowRoot!: ShadowRoot;
 
-    private kkIcon!: KKIcon;
+    private logoIcon!: KKIcon;
+    private githubIcon!: KKIcon;
 
     constructor() {
         super(template);
@@ -32,16 +33,19 @@ export class BinaryCalculator extends KKWebComponent {
     }
 
     protected getElementsReferences(): void {
-        this.kkIcon = <KKIcon>(<unknown>this.shadowRoot.querySelector('kk-icon'));
+        this.logoIcon = <KKIcon>(<unknown>this.shadowRoot.querySelector('#logo'));
+        this.githubIcon = <KKIcon>(<unknown>this.shadowRoot.querySelector('#github'));
     }
 
     private setUpElements(): void {
-        this.setUpIconElement();
+        this.setUpIconsElements();
     }
 
-    private setUpIconElement(): void {
-        this.kkIcon.iconId = IconId.LOGO;
-        this.kkIcon.iconSize = IconSize.L;
+    private setUpIconsElements(): void {
+        this.logoIcon.iconId = IconId.LOGO;
+        this.logoIcon.iconSize = IconSize.L;
+        this.githubIcon.iconId = IconId.GITHUB;
+        this.githubIcon.iconSize = IconSize.L;
     }
 }
 customElements.define(BinaryCalculator.TAG, BinaryCalculator);
