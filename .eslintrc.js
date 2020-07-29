@@ -18,5 +18,6 @@ module.exports = {
     rules: {
         '@typescript-eslint/no-namespace': 0,
         '@typescript-eslint/no-inferrable-types': 0,
+        '@typescript-eslint/restrict-template-expressions': 0
     }
 };
