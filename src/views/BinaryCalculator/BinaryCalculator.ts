@@ -1,7 +1,7 @@
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
 import { binaryCalculatorStyles } from './BinaryCalcuatorStyles';
-import { IconId } from '../../common/IconId';
+import { IconId } from '../../common/IconDefinitions/IconId';
 import { IconSize } from '../../components/Icon/interfaces/IconSize';
 
 const template: string = `
@@ -9,10 +9,12 @@ const template: string = `
 <main>
   <kk-app-header>
     <kk-icon slot="prepend" icon-id="${IconId.LOGO}" icon-size="${IconSize.L}"></kk-icon>
-    <kk-heading slot="center">Binary calculator</kk-heading>
+    <kk-heading slot="center"><strong>Binary calculator</strong></kk-heading>
     <kk-icon slot="append" icon-id="${IconId.GITHUB}" icon-size="${IconSize.L}" href="https://github.com/kaczor6418/binary-calculator" ></kk-icon>
   </kk-app-header>
-  <kk-app-body></kk-app-body>
+  <kk-app-body>
+    <kk-input></kk-input>
+  </kk-app-body>
   <kk-app-footer></kk-app-footer>
 </main>
 `;

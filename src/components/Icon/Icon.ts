@@ -1,15 +1,15 @@
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { CONSTANTS } from '../../common/CONSTANTS';
-import { IconId } from '../../common/IconId';
-import { IconDefinitions } from '../../common/IconDefinitoins';
+import { IconId } from '../../common/IconDefinitions/IconId';
+import { IconDefinitions } from '../../common/IconDefinitions/IconDefinitoins';
 import { IconSize } from './interfaces/IconSize';
 import { IconObservedAttributes } from './interfaces/IconObservedAttributes';
 import { NotSupportedObservedAttribute } from '../../errors/NotSupportedObservedAttribute';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
-import { iconStyle } from './IconStyle';
+import { iconStyles } from './IconStyles';
 
 const template: string = `
-<style>${iconStyle}</style>
+<style>${iconStyles}</style>
 <a></a>
 `;
 
@@ -35,14 +35,13 @@ export class Icon extends KKWebComponent {
         }
         switch (name) {
             case IconObservedAttributes.ICON_ID:
-                this.addIcon(EnumValueEnumConverter.toEnum(newValue, IconId));
+                this.addIcon(EnumValueEnumConverter.toEnumFromKey(newValue, IconId));
                 break;
             case IconObservedAttributes.ICON_SIZE:
-                this.setIconSize(EnumValueEnumConverter.toEnum(newValue, IconSize));
+                this.setIconSize(EnumValueEnumConverter.toEnumFromValue(newValue, IconSize));
                 break;
             case IconObservedAttributes.HREF:
-                this.icon.classList.add(Icon.REDIRECT_CLASS);
-                this.iconContainer.href = newValue;
+                this.setRedirectLinkAndClass(newValue);
                 break;
             default:
                 throw new NotSupportedObservedAttribute(`Attribute: ${name} doesn't exist in ${Icon.name} component`);
@@ -65,6 +64,11 @@ export class Icon extends KKWebComponent {
     private setIconSize(iconSize: IconSize): void {
         this.icon.setAttribute('width', iconSize);
         this.icon.setAttribute('height', iconSize);
+    }
+
+    private setRedirectLinkAndClass(link: string): void {
+        this.icon.classList.add(Icon.REDIRECT_CLASS);
+        this.iconContainer.href = link;
     }
 
     private hasIcon(): boolean {

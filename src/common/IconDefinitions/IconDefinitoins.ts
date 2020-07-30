@@ -1,13 +1,8 @@
+import { logo, github } from './IconsDeclarations';
+import { Utils } from '../Utils';
 import { IconId } from './IconId';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import logo from '../assets/icons/logo.svg';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import github from '../assets/icons/github.svg';
-import { Utils } from './Utils';
-import { StringElementConverter } from '../converters/StringElementConverter';
-import { IconNotFoundError } from '../errors/IconNotFoundError';
+import { StringElementConverter } from '../../converters/StringElementConverter';
+import { IconNotFoundError } from '../../errors/IconNotFoundError';
 
 export namespace IconDefinitions {
     const stringElementConverter: StringElementConverter = new StringElementConverter();

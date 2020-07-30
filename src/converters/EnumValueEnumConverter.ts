@@ -1,15 +1,23 @@
 import { Utils } from '../common/Utils';
-import { EnumKeyNotFound } from '../errors/EnumKeyNotFound';
+import { EnumKeyOrValueNotFound } from '../errors/EnumKeyOrValueNotFound';
 
 export class EnumValueEnumConverter {
-    public static toEnum<T>(keyOrValue: string | number, enumItem: Record<string, unknown>): T {
-        const enumEntries: Array<[string, string | unknown]> = Object.entries(enumItem);
+    public static toEnumFromKey<T>(key: string, enumDeclaration: Record<string, T>): T {
+        const convertedEnum: T = enumDeclaration[key];
+        if (Utils.isNullOrUndefined(convertedEnum)) {
+            throw new EnumKeyOrValueNotFound(`Key: ${convertedEnum} doesn't exist in this enum!`);
+        }
+        return convertedEnum;
+    }
+
+    public static toEnumFromValue<T>(value: string | number, enumDeclaration: Record<string, T>): T {
+        const enumEntries: Array<[string, string | unknown]> = Object.entries(enumDeclaration);
         const enumSingleItem: [string, string | unknown] | undefined = enumEntries.find((enumSet) =>
-            enumSet.includes(keyOrValue),
+            enumSet.includes(value),
         );
         if (Utils.isNullOrUndefined(enumSingleItem)) {
-            throw new EnumKeyNotFound(`Key or value: ${keyOrValue} doesn't exist in enum!`);
+            throw new EnumKeyOrValueNotFound(`Value: ${value} doesn't exist in this enum!`);
         }
-        return <T>enumItem[enumSingleItem[0]];
+        return enumDeclaration[enumSingleItem[0]];
     }
 }

@@ -1,5 +1,5 @@
 //language=CSS
-export const iconStyle: string = `
+export const iconStyles: string = `
 .redirect {
     transition: all var(--default-duration) var(--ease-in-out-quint);
 }

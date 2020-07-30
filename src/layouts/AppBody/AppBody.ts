@@ -2,9 +2,7 @@ import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
 
 const template: string = `
-<main>
-  <strong>APP BODY</strong>
-</main>
+<main><slot></slot></main>
 `;
 
 export class AppBody extends KKWebComponent {
