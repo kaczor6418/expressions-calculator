@@ -1,4 +1,4 @@
 export enum IconId {
-    LOGO,
-    GITHUB,
+    LOGO = 'LOGO',
+    GITHUB = 'GITHUB',
 }
