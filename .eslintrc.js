@@ -1,4 +1,3 @@
-/* eslint-disable */
 module.exports = {
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -18,6 +17,6 @@ module.exports = {
     rules: {
         '@typescript-eslint/no-namespace': 0,
         '@typescript-eslint/no-inferrable-types': 0,
-        '@typescript-eslint/restrict-template-expressions': 0
-    }
+        '@typescript-eslint/restrict-template-expressions': 0,
+    },
 };
