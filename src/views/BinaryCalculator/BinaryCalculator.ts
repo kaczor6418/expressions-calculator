@@ -4,6 +4,8 @@ import { binaryCalculatorStyles } from './BinaryCalcuatorStyles';
 import { IconId } from '../../common/IconDefinitions/IconId';
 import { IconSize } from '../../components/Icon/interfaces/IconSize';
 import { TextFieldSize } from '../../components/TextField/interface/TextFieldSize';
+import { TTextField } from '../../components/TextField/interface/TTextField';
+import { InputTextFieldListenerProps } from '../../components/TextField/interface/TextFieldListenerProps';
 
 const template: string = `
 <style>${binaryCalculatorStyles}</style>
@@ -25,8 +27,25 @@ export class BinaryCalculator extends KKWebComponent {
 
     public readonly shadowRoot!: ShadowRoot;
 
+    private textField!: TTextField;
+
     constructor() {
         super(template);
+        this.getElementsReferences();
+        this.setUpElements();
+    }
+
+    protected getElementsReferences(): void {
+        this.textField = <TTextField>(<unknown>this.shadowRoot.querySelector('kk-text-field'));
+    }
+
+    protected setUpElements(): void {
+        const callbackProps: InputTextFieldListenerProps = {
+            eventName: 'input',
+            callback: () => console.log(this.textField.value),
+        };
+        this.textField.setTextFieldInputListener(callbackProps);
     }
 }
+
 customElements.define(BinaryCalculator.TAG, BinaryCalculator);

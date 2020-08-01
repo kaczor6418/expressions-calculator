@@ -6,6 +6,8 @@ import { textFieldsStyles } from './TextFieldsStyles';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
 import { TextFieldSize } from './interface/TextFieldSize';
 import { NotSupportedSize } from '../../errors/NotSupportedSize';
+import { TextFieldListenerProps } from './interface/TextFieldListenerProps';
+import { TTextField } from './interface/TTextField';
 
 const template: string = `
 <style>${textFieldsStyles}</style>
@@ -14,7 +16,7 @@ const template: string = `
 </div>
 `;
 
-export class TextField extends KKWebComponent {
+export class TextField extends KKWebComponent implements TTextField {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-text-field`;
     public static observedAttributes: TextFieldObservedAttributes[] = Object.values(TextFieldObservedAttributes);
 
@@ -32,6 +34,10 @@ export class TextField extends KKWebComponent {
     constructor() {
         super(template);
         this.getElementsReferences();
+    }
+
+    get value(): string {
+        return this.input.value;
     }
 
     public attributeChangedCallback(name: TextFieldObservedAttributes, oldValue: string, newValue: string): void {
@@ -53,6 +59,10 @@ export class TextField extends KKWebComponent {
                     `Attribute: ${name} doesn't exist in ${TextField.name} component`,
                 );
         }
+    }
+
+    public setTextFieldInputListener({ eventName, callback }: TextFieldListenerProps): void {
+        this.input.addEventListener(eventName, callback);
     }
 
     protected getElementsReferences(): void {
