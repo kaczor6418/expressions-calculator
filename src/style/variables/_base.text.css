@@ -1,5 +1,11 @@
 :root {
     --font-size-base: 16px;
+    --font-size-xs: calc(var(--font-size-base) * 0.5);
+    --font-size-s: calc(var(--font-size-base) * 0.7);
+    --font-size-m: var(--font-size-base);
+    --font-size-l: calc( var(--font-size-base) * 1.5);
+    --font-size-xl: calc( var(--font-size-base) * 2);
+
     --font-weight-bold: bold;
     --font-weight-light: 300;
     --font-weight-normal: 400;

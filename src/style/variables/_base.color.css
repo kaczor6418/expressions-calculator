@@ -5,6 +5,7 @@
 
     --color-accent-1: #3FBA84;
     --color-accent-2: #263238;
+    --color-accent-2-inactive: rgba(38, 50, 56, 0.31);
 
-    --color-text-on-primary: #FFFFFF;
+    --color-text: #FFFFFF;
 }

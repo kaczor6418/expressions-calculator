@@ -3,7 +3,7 @@
 
 :root {
     background: var(--color-primary);
-    color: var(--color-text-on-primary);
+    color: var(--color-text);
     font-family: 'Roboto Mono', monospace;
     font-size: var(--font-size-base);
     line-height: var(--line-height);

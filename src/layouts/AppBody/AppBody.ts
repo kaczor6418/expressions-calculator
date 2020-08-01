@@ -1,7 +1,9 @@
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
+import { appBodyStyles } from './AppBodyStyles';
 
 const template: string = `
+<style>${appBodyStyles}</style>
 <main><slot></slot></main>
 `;
 
