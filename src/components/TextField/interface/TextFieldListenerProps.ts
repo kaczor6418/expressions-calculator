@@ -12,7 +12,3 @@ export interface BlurTextFieldListenerProps extends BaseTextFieldListenerProps {
 export interface InputTextFieldListenerProps extends BaseTextFieldListenerProps {
     eventName: Extract<keyof GlobalEventHandlersEventMap, 'input'>;
 }
-
-export function isBlurTextFieldProps(value: BaseTextFieldListenerProps): value is BlurTextFieldListenerProps {
-    return value.eventName === 'blur';
-}
