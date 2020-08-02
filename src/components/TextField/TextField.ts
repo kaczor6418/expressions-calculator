@@ -7,7 +7,7 @@ import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter'
 import { TextFieldSize } from './interface/TextFieldSize';
 import { NotSupportedSize } from '../../errors/NotSupportedSize';
 import { TextFieldListenerProps } from './interface/TextFieldListenerProps';
-import { TTextField } from './interface/TTextField';
+import { KKTextField } from './interface/KKTextField';
 
 const template: string = `
 <style>${textFieldsStyles}</style>
@@ -16,7 +16,7 @@ const template: string = `
 </div>
 `;
 
-export class TextField extends KKWebComponent implements TTextField {
+export class TextField extends KKWebComponent implements KKTextField {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-text-field`;
     public static observedAttributes: TextFieldObservedAttributes[] = Object.values(TextFieldObservedAttributes);
 

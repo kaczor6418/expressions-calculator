@@ -4,8 +4,9 @@ import { binaryCalculatorStyles } from './BinaryCalcuatorStyles';
 import { IconId } from '../../common/IconDefinitions/IconId';
 import { IconSize } from '../../components/Icon/interfaces/IconSize';
 import { TextFieldSize } from '../../components/TextField/interface/TextFieldSize';
-import { TTextField } from '../../components/TextField/interface/TTextField';
+import { KKTextField } from '../../components/TextField/interface/KKTextField';
 import { InputTextFieldListenerProps } from '../../components/TextField/interface/TextFieldListenerProps';
+import { KKAppFooter } from '../../layouts/AppFooter/interfaces/KKAppFooter';
 
 const template: string = `
 <style>${binaryCalculatorStyles}</style>
@@ -27,7 +28,8 @@ export class BinaryCalculator extends KKWebComponent {
 
     public readonly shadowRoot!: ShadowRoot;
 
-    private textField!: TTextField;
+    private textField!: KKTextField;
+    private footer!: KKAppFooter;
 
     constructor() {
         super(template);
@@ -36,7 +38,8 @@ export class BinaryCalculator extends KKWebComponent {
     }
 
     protected getElementsReferences(): void {
-        this.textField = <TTextField>(<unknown>this.shadowRoot.querySelector('kk-text-field'));
+        this.footer = <KKAppFooter>(<unknown>this.shadowRoot.querySelector('kk-app-footer'));
+        this.textField = <KKTextField>(<unknown>this.shadowRoot.querySelector('kk-text-field'));
     }
 
     protected setUpElements(): void {
@@ -45,6 +48,7 @@ export class BinaryCalculator extends KKWebComponent {
             callback: () => console.log(this.textField.value),
         };
         this.textField.setTextFieldInputListener(callbackProps);
+        this.footer.setCopyright({ year: '2020', author: 'Krzysztof Kaczyński', termsReferenceUrl: 'www.google.com' });
     }
 }
 
