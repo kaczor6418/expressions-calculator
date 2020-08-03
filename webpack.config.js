@@ -1,11 +1,16 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
 
 module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
     entry: './src/index.ts',
+    experiments: {
+        asyncWebAssembly: true,
+        importAsync: true
+    },
     output: {
         publicPath: '',
         filename: 'bundle.js',
@@ -35,6 +40,20 @@ module.exports = {
                 ],
                 include: [path.resolve(__dirname, 'src')],
             },
+            // {
+            //     test: /\.rs$/,
+            //     type: 'webassembly/experimental',
+            //     use: {
+            //         loader: 'rust-native-wasm-loader',
+            //         options: {
+            //             release: true
+            //         }
+            //     }
+            // }
+            // {
+            //     test: /\.wasm$/,
+            //     loader: 'base64-loader',
+            // }
         ],
     },
     resolve: {
@@ -52,5 +71,8 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css',
         }),
+        // new WasmPackPlugin({
+        //     crateDirectory: __dirname,
+        // }),
     ],
 };
