@@ -1,3 +1,4 @@
+// import { greet } from 'calculator-engine';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
 import { binaryCalculatorStyles } from './BinaryCalcuatorStyles';
@@ -35,6 +36,8 @@ export class BinaryCalculator extends KKWebComponent {
         super(template);
         this.getElementsReferences();
         this.setUpElements();
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+        // greet();
     }
 
     protected getElementsReferences(): void {
@@ -43,11 +46,24 @@ export class BinaryCalculator extends KKWebComponent {
     }
 
     protected setUpElements(): void {
-        const callbackProps: InputTextFieldListenerProps = {
-            eventName: 'input',
-            callback: () => console.log(this.textField.value),
-        };
-        this.textField.setTextFieldInputListener(callbackProps);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        import('../../../calculator-engine/pkg/calculator_engine_bg.wasm')
+            .then(({ greet }) => {
+                const callbackProps: InputTextFieldListenerProps = {
+                    eventName: 'input',
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
+                    callback: () => greet(),
+                };
+                this.textField.setTextFieldInputListener(callbackProps);
+            })
+            .catch((e) => console.log(e));
+        // const callbackProps: InputTextFieldListenerProps = {
+        //     eventName: 'input',
+        //     // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
+        //     callback: () => greet(),
+        // };
+        // this.textField.setTextFieldInputListener(callbackProps);
         this.footer.setCopyright({ year: '2020', author: 'Krzysztof Kaczyński', termsReferenceUrl: 'www.google.com' });
     }
 }
