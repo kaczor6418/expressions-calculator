@@ -20,9 +20,6 @@
     "url": "https://github.com/kaczor6418/binary-calculator/issues"
   },
   "homepage": "https://github.com/kaczor6418/binary-calculator#readme",
-  "dependencies": {
-    "calculator-engine": "file:./calculator-engine/pkg"
-  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
