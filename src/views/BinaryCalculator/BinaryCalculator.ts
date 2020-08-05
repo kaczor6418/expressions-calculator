@@ -15,7 +15,7 @@ const template: string = `
   <kk-app-header>
     <kk-icon slot="prepend" icon-id="${IconId.LOGO}" icon-size="${IconSize.L}"></kk-icon>
     <kk-heading slot="center"><strong>Binary calculator</strong></kk-heading>
-    <kk-icon slot="append" icon-id="${IconId.GITHUB}" icon-size="${IconSize.L}" href="https://www.google.com" ></kk-icon>
+    <kk-icon slot="append" icon-id="${IconId.GITHUB}" icon-size="${IconSize.L}" href="https://github.com/kaczor6418/binary-calculator" ></kk-icon>
   </kk-app-header>
   <kk-app-body>
     <kk-text-field placeholder="Type expression..." size=${TextFieldSize.L}></kk-text-field>

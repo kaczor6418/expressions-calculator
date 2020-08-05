@@ -2,7 +2,7 @@ import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
 import { appFooterStyles } from './AppFooterStyles';
 import { CopyrightProps } from './interfaces/CopyrightProps';
-import { StringElementConverter } from '../../converters/StringElementConverter';
+import { HTMLStringConverter } from '../../converters/HTMLStringConverter';
 import { KKAppFooter } from './interfaces/KKAppFooter';
 
 const template: string = `
@@ -32,7 +32,7 @@ export class AppFooter extends KKWebComponent implements KKAppFooter {
 
     public setCopyright({ year, author, termsReferenceUrl }: CopyrightProps): void {
         const copyrightText: string = AppFooter.formattedCopyrights`Copyright © ${year} ${author}. Policy terms${termsReferenceUrl}`;
-        this.footer.appendChild(new StringElementConverter().toElement(copyrightText));
+        this.footer.appendChild(HTMLStringConverter.toElement(copyrightText));
     }
 
     private static formattedCopyrights(strings: TemplateStringsArray, ...values: string[]): string {
