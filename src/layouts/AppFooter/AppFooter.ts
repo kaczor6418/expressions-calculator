@@ -31,18 +31,14 @@ export class AppFooter extends KKWebComponent implements KKAppFooter {
     }
 
     public setCopyright({ year, author, termsReferenceUrl }: CopyrightProps): void {
-        const copyrightText: string = AppFooter.formattedCopyrights`Copyright © ${year} ${author}. Policy terms${termsReferenceUrl}`;
+        const copyrightText: string = AppFooter.formattedCopyrights`Copyright © ${year} ${author} Policy terms${termsReferenceUrl}`;
         this.footer.appendChild(HTMLStringConverter.toElement(copyrightText));
     }
 
-    private static formattedCopyrights(strings: TemplateStringsArray, ...values: string[]): string {
-        const policyTermsUrlText: string = `<a href="${values[values.length - 1]}">${strings[strings.length - 2]}</a>`;
-        let formattedText: string = '<p>';
-        for (let i = 0; i < values.length - 1; i++) {
-            formattedText += `${strings[i]}${values[i]}`;
-        }
-        formattedText += `${policyTermsUrlText}</p>`;
-        return formattedText;
+    private static formattedCopyrights([copyright, separate, policyTerms]: TemplateStringsArray, year: string, author: string, policyTermsUrl: string): string {
+        const policyTermsText: string = policyTerms.trim();
+        const policyTermsUrlText: string = `<a href="${policyTermsUrl}">${policyTermsText}</a>`;
+        return `<p>${copyright + year + separate + author}. ${policyTermsUrlText}</p>`;
     }
 }
 customElements.define(AppFooter.TAG, AppFooter);
