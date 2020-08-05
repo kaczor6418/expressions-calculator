@@ -5,7 +5,7 @@ import { IconId } from '../../common/IconDefinitions/IconId';
 import { IconSize } from '../../components/Icon/interfaces/IconSize';
 import { TextFieldSize } from '../../components/TextField/interface/TextFieldSize';
 import { KKTextField } from '../../components/TextField/interface/KKTextField';
-import { InputTextFieldListenerProps } from '../../components/TextField/interface/TextFieldListenerProps';
+import { OnInputTextFieldListenerProps } from '../../components/TextField/interface/TextFieldListenerProps';
 import { KKAppFooter } from '../../layouts/AppFooter/interfaces/KKAppFooter';
 import { return_char } from '../../../calculator-engine/pkg/calculator_engine';
 
@@ -15,7 +15,7 @@ const template: string = `
   <kk-app-header>
     <kk-icon slot="prepend" icon-id="${IconId.LOGO}" icon-size="${IconSize.L}"></kk-icon>
     <kk-heading slot="center"><strong>Binary calculator</strong></kk-heading>
-    <kk-icon slot="append" icon-id="${IconId.GITHUB}" icon-size="${IconSize.L}" href="https://github.com/kaczor6418/binary-calculator" ></kk-icon>
+    <kk-icon slot="append" icon-id="${IconId.GITHUB}" icon-size="${IconSize.L}" href="https://www.google.com" ></kk-icon>
   </kk-app-header>
   <kk-app-body>
     <kk-text-field placeholder="Type expression..." size=${TextFieldSize.L}></kk-text-field>
@@ -44,12 +44,16 @@ export class BinaryCalculator extends KKWebComponent {
     }
 
     protected setUpElements(): void {
-        const callbackProps: InputTextFieldListenerProps = {
+        const callbackProps: OnInputTextFieldListenerProps = {
             eventName: 'input',
             callback: () => console.log(return_char()),
         };
         this.textField.setTextFieldInputListener(callbackProps);
-        this.footer.setCopyright({ year: '2020', author: 'Krzysztof Kaczyński', termsReferenceUrl: 'www.google.com' });
+        this.footer.setCopyright({
+            year: '2020',
+            author: 'Krzysztof Kaczyński',
+            termsReferenceUrl: 'https://www.google.com',
+        });
     }
 }
 

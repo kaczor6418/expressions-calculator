@@ -15,7 +15,7 @@ export namespace Utils {
     }
     /* eslint-enable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 
-    export function isNullOrUndefined(value: unknown): value is Extract<null | undefined, null | undefined> {
+    export function isNullOrUndefined(value: unknown): value is null | undefined {
         return value == null;
     }
 }

@@ -6,7 +6,11 @@ import { textFieldsStyles } from './TextFieldsStyles';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
 import { TextFieldSize } from './interface/TextFieldSize';
 import { NotSupportedSize } from '../../errors/NotSupportedSize';
-import { TextFieldListenerProps } from './interface/TextFieldListenerProps';
+import {
+    isOnBlurTextFieldProps,
+    isOnInputTextFieldProps,
+    TextFieldListenerProps,
+} from './interface/TextFieldListenerProps';
 import { KKTextField } from './interface/KKTextField';
 
 const template: string = `
@@ -61,8 +65,12 @@ export class TextField extends KKWebComponent implements KKTextField {
         }
     }
 
-    public setTextFieldInputListener({ eventName, callback }: TextFieldListenerProps): void {
-        this.input.addEventListener(eventName, callback);
+    public setTextFieldInputListener(listenerProps: TextFieldListenerProps): void {
+        if (isOnBlurTextFieldProps(listenerProps)) {
+            this.input.addEventListener<'blur'>(listenerProps.eventName, listenerProps.callback.bind(this));
+        } else if (isOnInputTextFieldProps(listenerProps)) {
+            this.input.addEventListener<'input'>(listenerProps.eventName, listenerProps.callback.bind(this));
+        }
     }
 
     protected getElementsReferences(): void {
