@@ -11,6 +11,21 @@ export abstract class KKWebComponent extends HTMLElement implements WebComponent
         Utils.injectGlobalStyles(this.shadowRoot);
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
+        return void 0;
+    }
+
+    public connectedCallback(): void {
+        return void 0;
+    }
+
+    public disconnectedCallback(): void {
+        return void 0;
+    }
+
     protected getElementsReferences(): void {
         return void 0;
     }
@@ -20,18 +35,6 @@ export abstract class KKWebComponent extends HTMLElement implements WebComponent
     }
 
     adoptedCallback(): void {
-        return void 0;
-    }
-
-    attributeChangedCallback(_name: string, _oldValue: string, _newValue: string): void {
-        return void 0;
-    }
-
-    connectedCallback(): void {
-        return void 0;
-    }
-
-    disconnectedCallback(): void {
         return void 0;
     }
 }
