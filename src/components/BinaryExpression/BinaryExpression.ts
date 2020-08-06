@@ -3,7 +3,7 @@ import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 
 const template: string = `
 <div>
-  <kk-input></kk-input>
+  <kk-text-field></kk-text-field>
   <kk-button></kk-button>
 </div>
 `;

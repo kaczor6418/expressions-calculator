@@ -1,3 +1,3 @@
 export { BinaryExpression } from './BinaryExpression';
-export { Button } from '../Button/Button';
-export { TextField } from '../TextField/TextField';
+export { Button } from '../Button/UsedComponents';
+export { TextField } from '../TextField/UsedComponents';
