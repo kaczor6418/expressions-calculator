@@ -1,7 +1,7 @@
 import { Utils } from '../../common/Utils';
 import { WebComponentLifecycle } from './interface/WebComponentLifecycle';
 
-export abstract class KKWebComponent extends HTMLElement implements Partial<WebComponentLifecycle> {
+export abstract class KKWebComponent extends HTMLElement implements WebComponentLifecycle {
     public readonly shadowRoot!: ShadowRoot;
 
     protected constructor(template: string) {
