@@ -1,5 +1,5 @@
 export interface CopyrightProps {
-    year: string;
+    date: string;
     author: string;
     termsReferenceUrl: string;
 }

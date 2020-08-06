@@ -50,7 +50,7 @@ export class BinaryCalculator extends KKWebComponent {
         };
         this.textField.setTextFieldInputListener(callbackProps);
         this.footer.setCopyright({
-            year: '2020',
+            date: '2020',
             author: 'Krzysztof Kaczyński',
             termsReferenceUrl: 'https://www.google.com',
         });

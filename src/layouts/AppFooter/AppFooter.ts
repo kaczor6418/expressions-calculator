@@ -30,15 +30,20 @@ export class AppFooter extends KKWebComponent implements KKAppFooter {
         this.footer = <HTMLElement>this.shadowRoot.querySelector('footer');
     }
 
-    public setCopyright({ year, author, termsReferenceUrl }: CopyrightProps): void {
-        const copyrightText: string = AppFooter.formattedCopyrights`Copyright © ${year} ${author} Policy terms${termsReferenceUrl}`;
+    public setCopyright({ date, author, termsReferenceUrl }: CopyrightProps): void {
+        const copyrightText: string = AppFooter.formattedCopyrights`Copyright © ${date} ${author} Policy terms${termsReferenceUrl}`;
         this.footer.appendChild(HTMLStringConverter.toElement(copyrightText));
     }
 
-    private static formattedCopyrights([copyright, separate, policyTerms]: TemplateStringsArray, year: string, author: string, policyTermsUrl: string): string {
+    private static formattedCopyrights(
+        [copyright, separate, policyTerms]: TemplateStringsArray,
+        date: string,
+        author: string,
+        policyTermsUrl: string,
+    ): string {
         const policyTermsText: string = policyTerms.trim();
         const policyTermsUrlText: string = `<a href="${policyTermsUrl}">${policyTermsText}</a>`;
-        return `<p>${copyright + year + separate + author}. ${policyTermsUrlText}</p>`;
+        return `<p>${copyright + date + separate + author}. ${policyTermsUrlText}</p>`;
     }
 }
 customElements.define(AppFooter.TAG, AppFooter);
