@@ -1,6 +1,7 @@
 //language=CSS
 export const iconStyles: string = `
 .redirect {
+    fill: var(--color-accent-1-inactive);
     transition: all var(--default-duration) var(--ease-in-out-quint);
     transition-property: fill, transform;
     will-change: fill, transform;

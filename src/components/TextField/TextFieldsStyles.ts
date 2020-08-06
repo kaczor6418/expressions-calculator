@@ -15,7 +15,7 @@ input {
     width: 100%;
     padding: var(--spacing-m) var(--spacing-l);
     color: var(--color-text);
-    background-color: var(--color-accent-2-disable);
+    background-color: var(--color-accent-2-inactive);
     border-bottom: 1px solid var(--color-accent-2);
     
     transition: all var(--default-duration) var(--ease-in-out-quint);
