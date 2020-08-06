@@ -11,8 +11,6 @@ const template: string = `
 export class BinaryExpression extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-expression`;
 
-    public readonly shadowRoot!: ShadowRoot;
-
     constructor() {
         super(template);
     }

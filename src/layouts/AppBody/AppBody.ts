@@ -10,8 +10,6 @@ const template: string = `
 export class AppBody extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-app-body`;
 
-    public readonly shadowRoot!: ShadowRoot;
-
     constructor() {
         super(template);
     }

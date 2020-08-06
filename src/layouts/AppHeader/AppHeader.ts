@@ -14,8 +14,6 @@ const template: string = `
 export class AppHeader extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-app-header`;
 
-    public readonly shadowRoot!: ShadowRoot;
-
     constructor() {
         super(template);
     }

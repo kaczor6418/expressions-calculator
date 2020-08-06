@@ -27,8 +27,6 @@ const template: string = `
 export class BinaryCalculator extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-calculator`;
 
-    public readonly shadowRoot!: ShadowRoot;
-
     private textField!: KKTextField;
     private footer!: KKAppFooter;
 
@@ -56,5 +54,4 @@ export class BinaryCalculator extends KKWebComponent {
         });
     }
 }
-
 customElements.define(BinaryCalculator.TAG, BinaryCalculator);

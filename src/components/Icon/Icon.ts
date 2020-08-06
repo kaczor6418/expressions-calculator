@@ -17,8 +17,6 @@ export class Icon extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-icon`;
     public static observedAttributes: IconObservedAttributes[] = Object.values(IconObservedAttributes);
 
-    public readonly shadowRoot!: ShadowRoot;
-
     private static REDIRECT_CLASS = 'redirect';
 
     private iconContainer!: HTMLAnchorElement;

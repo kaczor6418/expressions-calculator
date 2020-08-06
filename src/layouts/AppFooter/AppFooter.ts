@@ -17,8 +17,6 @@ const template: string = `
 export class AppFooter extends KKWebComponent implements KKAppFooter {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-app-footer`;
 
-    public readonly shadowRoot!: ShadowRoot;
-
     private footer!: HTMLElement;
 
     constructor() {
