@@ -8,11 +8,7 @@ import { KKList } from './interfaces/KKList';
 
 const template: string = `
 <style>${listStyles}</style>
-<ul>
-  <li>test1</li>
-  <li>test2</li>
-  <li>test3</li>
-</ul>
+<ul></ul>
 `;
 
 export class List<T extends HTMLElement> extends KKWebComponent implements KKList<T> {

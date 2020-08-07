@@ -9,7 +9,8 @@ import { NotSupportedSize } from '../../errors/NotSupportedSize';
 import {
     isOnBlurTextFieldProps,
     isOnInputTextFieldProps,
-    TextFieldListenerProps,
+    isOnKeyDownTextFieldListenerProps,
+    TextFieldListenerProps
 } from './interface/TextFieldListenerProps';
 import { KKTextField } from './interface/KKTextField';
 
@@ -44,6 +45,10 @@ export class TextField extends KKWebComponent implements KKTextField {
         return this.input.value;
     }
 
+    set value(newValue: string) {
+        this.input.value = newValue;
+    }
+
     public attributeChangedCallback(name: TextFieldObservedAttributes, oldValue: string, newValue: string): void {
         if (oldValue === newValue) {
             return;
@@ -59,10 +64,12 @@ export class TextField extends KKWebComponent implements KKTextField {
                 this.setInputSize(EnumValueEnumConverter.toEnumFromValue(newValue, TextFieldSize));
                 break;
             default:
-                throw new NotSupportedObservedAttribute(
-                    `Attribute: ${name} doesn't exist in ${TextField.name} component`,
-                );
+                throw new NotSupportedObservedAttribute(`Attribute: ${name} doesn't exist in ${TextField.name} component`);
         }
+    }
+
+    public clear(): void {
+        this.input.value = '';
     }
 
     public setTextFieldInputListener(listenerProps: TextFieldListenerProps): void {
@@ -70,6 +77,8 @@ export class TextField extends KKWebComponent implements KKTextField {
             this.input.addEventListener<'blur'>(listenerProps.eventName, listenerProps.callback.bind(this));
         } else if (isOnInputTextFieldProps(listenerProps)) {
             this.input.addEventListener<'input'>(listenerProps.eventName, listenerProps.callback.bind(this));
+        } else if (isOnKeyDownTextFieldListenerProps(listenerProps)) {
+            this.input.addEventListener<'keydown'>(listenerProps.eventName, listenerProps.callback.bind(this));
         }
     }
 

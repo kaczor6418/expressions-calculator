@@ -1,25 +1,27 @@
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { KKTextField } from '../TextField/interface/KKTextField';
-import { OnInputTextFieldListenerProps } from '../TextField/interface/TextFieldListenerProps';
-import { return_char } from '../../../calculator-engine/pkg/calculator_engine';
+import { OnKeyDownTextFieldListenerProps } from '../TextField/interface/TextFieldListenerProps';
 import { TextFieldSize } from '../TextField/interface/TextFieldSize';
+import { KKList } from '../List/interfaces/KKList';
+import { List } from '../List/List';
+import { TextField } from '../TextField/TextField';
+import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
-    background: 'var(--color-accent-2-inactive)',
+    background: 'var(--color-accent-2-inactive)'
 };
 
 const template: string = `
-<div>
-  <kk-list custom-styles=${JSON.stringify(listCustomStyles)}></kk-list>
-  <kk-text-field placeholder="Type expression..." size=${TextFieldSize.L}></kk-text-field>
-</div>
+<${List.TAG} custom-styles=${JSON.stringify(listCustomStyles)}></${List.TAG}>
+<${TextField.TAG} placeholder="Type expression..." size=${TextFieldSize.L}></${TextField.TAG}>
 `;
 
 export class BinaryExpression extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-expression`;
 
-    private textField!: KKTextField;
+    private kkTextField!: KKTextField;
+    private kkList!: KKList<HTMLParagraphElement>;
 
     constructor() {
         super(template);
@@ -28,15 +30,27 @@ export class BinaryExpression extends KKWebComponent {
     }
 
     protected getElementsReferences(): void {
-        this.textField = <KKTextField>(<unknown>this.shadowRoot.querySelector('kk-text-field'));
+        this.kkTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(`${TextField.TAG}`));
+        this.kkList = <KKList<HTMLParagraphElement>>(<unknown>this.shadowRoot.querySelector(`${List.TAG}`));
     }
 
     protected setUpElements(): void {
-        const callbackProps: OnInputTextFieldListenerProps = {
-            eventName: 'input',
-            callback: () => console.log(return_char()),
+        const callbackProps: OnKeyDownTextFieldListenerProps = {
+            eventName: 'keydown',
+            callback: this.expressionChanged.bind(this)
         };
-        this.textField.setTextFieldInputListener(callbackProps);
+        this.kkTextField.setTextFieldInputListener(callbackProps);
+    }
+
+    private expressionChanged(e: KeyboardEvent): void {
+        if (e.key === KeyboardKey.ENTER || e.key === KeyboardKey.EQUAL) {
+            const newItem: HTMLParagraphElement = document.createElement('p');
+            newItem.textContent = this.kkTextField.value;
+            this.kkList.addElement(newItem);
+            this.kkTextField.clear();
+            e.preventDefault();
+        }
     }
 }
+
 customElements.define(BinaryExpression.TAG, BinaryExpression);
