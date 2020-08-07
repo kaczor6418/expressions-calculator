@@ -7,6 +7,7 @@ import { KKList } from '../List/interfaces/KKList';
 import { List } from '../List/List';
 import { TextField } from '../TextField/TextField';
 import { KeyboardKey } from '../../common/Enums/KeyboardKey';
+import { BinaryExpressionItem } from '../BinaryExpressionItem/BinaryExpressionItem';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)'
@@ -21,7 +22,7 @@ export class BinaryExpression extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-expression`;
 
     private kkTextField!: KKTextField;
-    private kkList!: KKList<HTMLParagraphElement>;
+    private kkList!: KKList<BinaryExpressionItem>;
 
     constructor() {
         super(template);
@@ -31,7 +32,7 @@ export class BinaryExpression extends KKWebComponent {
 
     protected getElementsReferences(): void {
         this.kkTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(`${TextField.TAG}`));
-        this.kkList = <KKList<HTMLParagraphElement>>(<unknown>this.shadowRoot.querySelector(`${List.TAG}`));
+        this.kkList = <KKList<BinaryExpressionItem>>(<unknown>this.shadowRoot.querySelector(`${List.TAG}`));
     }
 
     protected setUpElements(): void {
@@ -44,9 +45,8 @@ export class BinaryExpression extends KKWebComponent {
 
     private expressionChanged(e: KeyboardEvent): void {
         if (e.key === KeyboardKey.ENTER || e.key === KeyboardKey.EQUAL) {
-            const newItem: HTMLParagraphElement = document.createElement('p');
-            newItem.textContent = this.kkTextField.value;
-            this.kkList.addElement(newItem);
+            const expressionItem: BinaryExpressionItem = new BinaryExpressionItem(this.kkTextField.value, '12');
+            this.kkList.addElement(expressionItem);
             this.kkTextField.clear();
             e.preventDefault();
         }
