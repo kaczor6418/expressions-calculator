@@ -1,16 +1,13 @@
 import { KKWebComponent } from './components/KKWebComponent/KKWebComponent';
-
-export * from './views/BinaryCalculator/UsedComponents';
 import { CONSTANTS } from './common/CONSTANTS';
+import { BinaryCalculator } from './views/BinaryCalculator/BinaryCalculator';
 
 const template: string = `
-<kk-binary-calculator></kk-binary-calculator>
+<${BinaryCalculator.TAG}></${BinaryCalculator.TAG}>
 `;
 
 export class App extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-app`;
-
-    public readonly shadowRoot!: ShadowRoot;
 
     constructor() {
         super(template);

@@ -37,7 +37,7 @@ export class AppFooter extends KKWebComponent implements KKAppFooter {
         [copyright, separate, policyTerms]: TemplateStringsArray,
         date: string,
         author: string,
-        policyTermsUrl: string,
+        policyTermsUrl: string
     ): string {
         const policyTermsText: string = policyTerms.trim();
         const policyTermsUrlText: string = `<a href="${policyTermsUrl}">${policyTermsText}</a>`;

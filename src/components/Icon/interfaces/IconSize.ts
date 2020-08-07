@@ -3,5 +3,5 @@ export enum IconSize {
     S = '16',
     M = '32',
     L = '64',
-    XL = '128',
+    XL = '128'
 }

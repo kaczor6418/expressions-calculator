@@ -1,6 +1,6 @@
 import { logo, github } from './IconsDeclarations';
 import { Utils } from '../Utils';
-import { IconId } from './IconId';
+import { IconId } from '../Enums/IconId';
 import { HTMLStringConverter } from '../../converters/HTMLStringConverter';
 import { IconNotFoundError } from '../../errors/IconNotFoundError';
 

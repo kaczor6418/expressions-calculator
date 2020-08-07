@@ -1,6 +1,6 @@
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { CONSTANTS } from '../../common/CONSTANTS';
-import { IconId } from '../../common/IconDefinitions/IconId';
+import { IconId } from '../../common/Enums/IconId';
 import { IconDefinitions } from '../../common/IconDefinitions/IconDefinitoins';
 import { IconSize } from './interfaces/IconSize';
 import { IconObservedAttributes } from './interfaces/IconObservedAttributes';

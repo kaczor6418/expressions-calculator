@@ -1,22 +1,28 @@
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
 import { binaryCalculatorStyles } from './BinaryCalcuatorStyles';
-import { IconId } from '../../common/IconDefinitions/IconId';
+import { IconId } from '../../common/Enums/IconId';
 import { IconSize } from '../../components/Icon/interfaces/IconSize';
 import { KKAppFooter } from '../../layouts/AppFooter/interfaces/KKAppFooter';
+import { Icon } from '../../components/Icon/Icon';
+import { Heading } from '../../components/Heading/Heading';
+import { AppBody } from '../../layouts/AppBody/AppBody';
+import { BinaryExpression } from '../../components/BinaryExpression/BinaryExpression';
+import { AppFooter } from '../../layouts/AppFooter/AppFooter';
+import { AppHeader } from '../../layouts/AppHeader/AppHeader';
 
 const template: string = `
 <style>${binaryCalculatorStyles}</style>
 <main>
-  <kk-app-header>
-    <kk-icon slot="prepend" icon-id="${IconId.LOGO}" icon-size="${IconSize.L}"></kk-icon>
-    <kk-heading slot="center"><strong>Binary calculator</strong></kk-heading>
-    <kk-icon slot="append" icon-id="${IconId.GITHUB}" icon-size="${IconSize.L}" href="https://github.com/kaczor6418/binary-calculator" ></kk-icon>
-  </kk-app-header>
-  <kk-app-body>
-    <kk-binary-expression></kk-binary-expression>
-  </kk-app-body>
-  <kk-app-footer></kk-app-footer>
+  <${AppHeader.TAG}>
+    <${Icon.TAG} slot="prepend" icon-id="${IconId.LOGO}" icon-size="${IconSize.L}"></${Icon.TAG}>
+    <${Heading.TAG} slot="center"><strong>Binary calculator</strong></${Heading.TAG}>
+    <${Icon.TAG} slot="append" icon-id="${IconId.GITHUB}" icon-size="${IconSize.L}" href="https://github.com/kaczor6418/binary-calculator" ></${Icon.TAG}>
+  </${AppHeader.TAG}>
+  <${AppBody.TAG}>
+    <${BinaryExpression.TAG}></${BinaryExpression.TAG}>
+  </${AppBody.TAG}>
+  <${AppFooter.TAG}></${AppFooter.TAG}>
 </main>
 `;
 
@@ -32,14 +38,14 @@ export class BinaryCalculator extends KKWebComponent {
     }
 
     protected getElementsReferences(): void {
-        this.footer = <KKAppFooter>(<unknown>this.shadowRoot.querySelector('kk-app-footer'));
+        this.footer = <KKAppFooter>(<unknown>this.shadowRoot.querySelector(`${AppFooter.TAG}`));
     }
 
     protected setUpElements(): void {
         this.footer.setCopyright({
             date: '2020',
             author: 'Krzysztof Kaczyński',
-            termsReferenceUrl: 'https://www.google.com',
+            termsReferenceUrl: 'https://www.google.com'
         });
     }
 }

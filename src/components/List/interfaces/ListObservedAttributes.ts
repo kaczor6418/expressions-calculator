@@ -1,3 +1,3 @@
 export enum ListObservedAttributes {
-    CUSTOM_STYLES = 'custom-styles',
+    CUSTOM_STYLES = 'custom-styles'
 }
