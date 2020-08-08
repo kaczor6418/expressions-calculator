@@ -17,15 +17,10 @@ const template: string = `
 export class AppFooter extends KKWebComponent implements KKAppFooter {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-app-footer`;
 
-    private footer!: HTMLElement;
+    private readonly footer: HTMLElement = <HTMLElement>this.shadowRoot.querySelector('footer');
 
     constructor() {
         super(template);
-        this.getElementsReferences();
-    }
-
-    protected getElementsReferences(): void {
-        this.footer = <HTMLElement>this.shadowRoot.querySelector('footer');
     }
 
     public setCopyright({ date, author, termsReferenceUrl }: CopyrightProps): void {

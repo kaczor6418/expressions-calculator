@@ -15,12 +15,12 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-list`;
     public static observedAttributes: ListObservedAttributes[] = Object.values(ListObservedAttributes);
 
-    private listWrapper!: HTMLUListElement;
+    private readonly listWrapper: HTMLUListElement = <HTMLUListElement>this.shadowRoot.querySelector('ul');
+
     private listElements: T[] = [];
 
     constructor() {
         super(template);
-        this.getElementsReferences();
     }
 
     get elements(): T[] {
@@ -48,10 +48,6 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
         const li: HTMLLIElement = document.createElement('li');
         li.appendChild(element);
         this.listWrapper.appendChild(li);
-    }
-
-    protected getElementsReferences(): void {
-        this.listWrapper = <HTMLUListElement>this.shadowRoot.querySelector('ul');
     }
 
     private setListCustomStyles(styles: Partial<CSSStyleDeclaration>): void {

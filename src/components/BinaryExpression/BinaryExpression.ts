@@ -22,8 +22,10 @@ const template: string = `
 export class BinaryExpression extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-expression`;
 
-    private kkTextField: KKTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(`${TextField.TAG}`));
-    private kkList: KKList<BinaryExpressionItem> = <KKList<BinaryExpressionItem>>(<unknown>this.shadowRoot.querySelector(`${List.TAG}`));
+    private readonly kkTextField: KKTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(`${TextField.TAG}`));
+    private readonly kkList: KKList<BinaryExpressionItem> = <KKList<BinaryExpressionItem>>(
+        (<unknown>this.shadowRoot.querySelector(`${List.TAG}`))
+    );
 
     constructor() {
         super(template);

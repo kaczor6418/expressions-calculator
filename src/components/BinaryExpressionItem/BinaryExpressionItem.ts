@@ -17,6 +17,7 @@ export class BinaryExpressionItem extends KKWebComponent implements KKBinaryExpr
 
     private readonly expression: HTMLElement = <HTMLElement>this.shadowRoot.querySelector('var');
     private readonly score: HTMLElement = <HTMLElement>this.shadowRoot.querySelector('mark');
+
     private value: number | null = null;
 
     constructor() {

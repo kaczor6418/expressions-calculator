@@ -26,15 +26,11 @@ export abstract class KKWebComponent extends HTMLElement implements WebComponent
         return void 0;
     }
 
-    protected getElementsReferences(): void {
+    public adoptedCallback(): void {
         return void 0;
     }
 
     protected setUpElements(): void {
-        return void 0;
-    }
-
-    adoptedCallback(): void {
         return void 0;
     }
 }

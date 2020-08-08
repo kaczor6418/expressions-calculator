@@ -25,20 +25,17 @@ export class TextField extends KKWebComponent implements KKTextField {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-text-field`;
     public static observedAttributes: TextFieldObservedAttributes[] = Object.values(TextFieldObservedAttributes);
 
-    public readonly shadowRoot!: ShadowRoot;
-
     private static INPUT_XS_CLASS: string = 'input-xs';
     private static INPUT_S_CLASS: string = 'input-s';
     private static INPUT_M_CLASS: string = 'input-m';
     private static INPUT_L_CLASS: string = 'input-l';
     private static INPUT_XL_CLASS: string = 'input-xl';
 
-    private textFieldContainer!: HTMLDivElement;
-    private input!: HTMLInputElement;
+    private readonly textFieldContainer: HTMLDivElement = <HTMLDivElement>this.shadowRoot.querySelector('div');
+    private readonly input: HTMLInputElement = <HTMLInputElement>this.textFieldContainer.querySelector('input');
 
     constructor() {
         super(template);
-        this.getElementsReferences();
     }
 
     get lastChar(): string {
@@ -84,11 +81,6 @@ export class TextField extends KKWebComponent implements KKTextField {
         } else if (isOnKeyDownTextFieldListenerProps(listenerProps)) {
             this.input.addEventListener<'keydown'>(listenerProps.eventName, listenerProps.callback.bind(this));
         }
-    }
-
-    protected getElementsReferences(): void {
-        this.textFieldContainer = <HTMLDivElement>this.shadowRoot.querySelector('div');
-        this.input = <HTMLInputElement>this.textFieldContainer.querySelector('input');
     }
 
     private addLabel(labelText: string): void {

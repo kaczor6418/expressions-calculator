@@ -19,12 +19,12 @@ export class Icon extends KKWebComponent {
 
     private static REDIRECT_CLASS = 'redirect';
 
-    private iconContainer!: HTMLAnchorElement;
+    private readonly iconContainer: HTMLAnchorElement = <HTMLAnchorElement>this.shadowRoot.querySelector('a');
+
     private icon!: SVGElement;
 
     constructor() {
         super(template);
-        this.getElementsReferences();
     }
 
     public attributeChangedCallback(name: IconObservedAttributes, oldValue: string, newValue: string): void {
@@ -44,10 +44,6 @@ export class Icon extends KKWebComponent {
             default:
                 throw new NotSupportedObservedAttribute(`Attribute: ${name} doesn't exist in ${Icon.name} component`);
         }
-    }
-
-    protected getElementsReferences(): void {
-        this.iconContainer = <HTMLAnchorElement>this.shadowRoot.querySelector('a');
     }
 
     private addIcon(iconId: IconId): void {
