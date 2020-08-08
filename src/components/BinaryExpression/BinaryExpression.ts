@@ -8,6 +8,7 @@ import { List } from '../List/List';
 import { TextField } from '../TextField/TextField';
 import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 import { BinaryExpressionItem } from '../BinaryExpressionItem/BinaryExpressionItem';
+import { KKBinaryExpressionItem } from '../BinaryExpressionItem/interfaces/KKBinaryExpressionItem';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)'
@@ -21,18 +22,12 @@ const template: string = `
 export class BinaryExpression extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-expression`;
 
-    private kkTextField!: KKTextField;
-    private kkList!: KKList<BinaryExpressionItem>;
+    private kkTextField: KKTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(`${TextField.TAG}`));
+    private kkList: KKList<BinaryExpressionItem> = <KKList<BinaryExpressionItem>>(<unknown>this.shadowRoot.querySelector(`${List.TAG}`));
 
     constructor() {
         super(template);
-        this.getElementsReferences();
         this.setUpElements();
-    }
-
-    protected getElementsReferences(): void {
-        this.kkTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(`${TextField.TAG}`));
-        this.kkList = <KKList<BinaryExpressionItem>>(<unknown>this.shadowRoot.querySelector(`${List.TAG}`));
     }
 
     protected setUpElements(): void {
@@ -45,10 +40,21 @@ export class BinaryExpression extends KKWebComponent {
 
     private expressionChanged(e: KeyboardEvent): void {
         if (e.key === KeyboardKey.ENTER || e.key === KeyboardKey.EQUAL) {
-            const expressionItem: BinaryExpressionItem = new BinaryExpressionItem(this.kkTextField.value, '12');
+            const expressionItem: BinaryExpressionItem = new BinaryExpressionItem();
+            expressionItem.expressionValue = this.kkTextField.value;
+            expressionItem.scoreValue = Math.random() * (1000 - 1) + 1;
+            expressionItem.setScoreCallback(() => this.clickExpressionItem(expressionItem));
             this.kkList.addElement(expressionItem);
             this.kkTextField.clear();
             e.preventDefault();
+        }
+    }
+
+    private clickExpressionItem(expressionItem: KKBinaryExpressionItem): void {
+        if (['+', '-'].includes(this.kkTextField.lastChar)) {
+            this.kkTextField.value = `${this.kkTextField.value} ${expressionItem.scoreValue}`;
+        } else {
+            this.kkTextField.value = `${expressionItem.scoreValue}`;
         }
     }
 }

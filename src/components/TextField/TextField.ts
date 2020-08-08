@@ -41,6 +41,10 @@ export class TextField extends KKWebComponent implements KKTextField {
         this.getElementsReferences();
     }
 
+    get lastChar(): string {
+        return this.input.value[this.input.value.length - 1];
+    }
+
     get value(): string {
         return this.input.value;
     }

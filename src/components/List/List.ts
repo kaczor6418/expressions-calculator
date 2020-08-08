@@ -45,7 +45,9 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
     }
 
     public addElement(element: T): void {
-        this.listWrapper.appendChild(element);
+        const li: HTMLLIElement = document.createElement('li');
+        li.appendChild(element);
+        this.listWrapper.appendChild(li);
     }
 
     protected getElementsReferences(): void {

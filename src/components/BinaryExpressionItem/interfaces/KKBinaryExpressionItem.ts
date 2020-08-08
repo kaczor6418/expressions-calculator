@@ -1,4 +1,5 @@
 export interface KKBinaryExpressionItem {
-    readonly expressionValue: string;
-    readonly scoreValue: string;
+    expressionValue: string;
+    scoreValue: number | null;
+    setScoreCallback(callback: (e?: MouseEvent) => void): void;
 }
