@@ -6,9 +6,9 @@ export class HTMLStringConverter {
         const wrapper: HTMLDivElement = document.createElement('div');
         wrapper.innerHTML = htmlString;
         const parsedElement: T | null = <T>wrapper.firstElementChild;
-        if (!Utils.isNullOrUndefined(parsedElement)) {
-            return parsedElement;
+        if (Utils.isNullOrUndefined(parsedElement)) {
+            throw new ParseToElementError(`This xml string ${htmlString} is not parsable to Element`);
         }
-        throw new ParseToElementError(`This xml string ${htmlString} is not parsable to Element`);
+        return parsedElement;
     }
 }

@@ -69,5 +69,4 @@ export class Icon extends KKWebComponent {
         return this.iconContainer.childElementCount > 0;
     }
 }
-
 customElements.define(Icon.TAG, Icon);

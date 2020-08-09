@@ -29,6 +29,9 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
 
     set elements(listElements: T[]) {
         this.listElements = listElements;
+        for (const element of this.elements) {
+            this.appendListElement(element);
+        }
     }
 
     public attributeChangedCallback(name: ListObservedAttributes, oldValue: string, newValue: string): void {
@@ -45,6 +48,11 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
     }
 
     public addElement(element: T): void {
+        this.elements.push(element);
+        this.appendListElement(element);
+    }
+
+    private appendListElement(element: T): void {
         const li: HTMLLIElement = document.createElement('li');
         li.appendChild(element);
         this.listWrapper.appendChild(li);

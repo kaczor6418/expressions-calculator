@@ -39,7 +39,7 @@ export class TextField extends KKWebComponent implements KKTextField {
     }
 
     get lastChar(): string {
-        return this.input.value[this.input.value.length - 1];
+        return this.input.value.trimEnd()[this.input.value.trimEnd().length - 1];
     }
 
     get value(): string {

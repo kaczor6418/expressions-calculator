@@ -11,7 +11,9 @@ import { BinaryExpressionItem } from '../BinaryExpressionItem/BinaryExpressionIt
 import { KKBinaryExpressionItem } from '../BinaryExpressionItem/interfaces/KKBinaryExpressionItem';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
-    background: 'var(--color-accent-2-inactive)'
+    background: 'var(--color-accent-2-inactive)',
+    maxHeight: '70%',
+    overflowY: 'auto'
 };
 
 const template: string = `
