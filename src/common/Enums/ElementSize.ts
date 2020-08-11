@@ -1,4 +1,4 @@
-export enum TextFieldSize {
+export enum ElementSize {
     XS = 'XS',
     S = 'S',
     M = 'M',

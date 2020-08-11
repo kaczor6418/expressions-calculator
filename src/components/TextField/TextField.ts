@@ -4,7 +4,7 @@ import { TextFieldObservedAttributes } from './interface/TextFieldObservedAttrib
 import { NotSupportedObservedAttribute } from '../../errors/NotSupportedObservedAttribute';
 import { textFieldsStyles } from './TextFieldsStyles';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
-import { TextFieldSize } from './interface/TextFieldSize';
+import { ElementSize } from '../../common/Enums/ElementSize';
 import { NotSupportedSize } from '../../errors/NotSupportedSize';
 import {
     isOnBlurTextFieldProps,
@@ -62,7 +62,7 @@ export class TextField extends KKWebComponent implements KKTextField {
                 this.addLabel(newValue);
                 break;
             case TextFieldObservedAttributes.SIZE:
-                this.setInputSize(EnumValueEnumConverter.toEnumFromValue(newValue, TextFieldSize));
+                this.setInputSize(EnumValueEnumConverter.toEnumFromValue(newValue, ElementSize));
                 break;
             default:
                 throw new NotSupportedObservedAttribute(`Attribute: ${name} doesn't exist in ${TextField.name} component`);
@@ -89,21 +89,21 @@ export class TextField extends KKWebComponent implements KKTextField {
         this.textFieldContainer.prepend(label);
     }
 
-    private setInputSize(textFieldSize: TextFieldSize): void {
+    private setInputSize(textFieldSize: ElementSize): void {
         switch (textFieldSize) {
-            case TextFieldSize.XS:
+            case ElementSize.XS:
                 this.input.className = TextField.INPUT_XS_CLASS;
                 break;
-            case TextFieldSize.S:
+            case ElementSize.S:
                 this.input.className = TextField.INPUT_S_CLASS;
                 break;
-            case TextFieldSize.M:
+            case ElementSize.M:
                 this.input.className = TextField.INPUT_M_CLASS;
                 break;
-            case TextFieldSize.L:
+            case ElementSize.L:
                 this.input.className = TextField.INPUT_L_CLASS;
                 break;
-            case TextFieldSize.XL:
+            case ElementSize.XL:
                 this.input.className = TextField.INPUT_XL_CLASS;
                 break;
             default:

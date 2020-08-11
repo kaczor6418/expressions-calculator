@@ -2,14 +2,15 @@ import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { KKTextField } from '../TextField/interface/KKTextField';
 import { OnKeyDownTextFieldListenerProps } from '../TextField/interface/TextFieldListenerProps';
-import { TextFieldSize } from '../TextField/interface/TextFieldSize';
+import { ElementSize } from '../../common/Enums/ElementSize';
 import { KKList } from '../List/interfaces/KKList';
 import { List } from '../List/List';
 import { TextField } from '../TextField/TextField';
 import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 import { BinaryExpressionItem } from '../BinaryExpressionItem/BinaryExpressionItem';
 import { KKBinaryExpressionItem } from '../BinaryExpressionItem/interfaces/KKBinaryExpressionItem';
-import { LexicalAnalyzer } from '../../../calculator-engine/pkg/calculator_engine';
+import { Button } from '../Button/Button';
+// import { LexicalAnalyzer } from '../../../calculator-engine/pkg/calculator_engine';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)',
@@ -19,7 +20,8 @@ const listCustomStyles: Partial<CSSStyleDeclaration> = {
 
 const template: string = `
 <${List.TAG} custom-styles=${JSON.stringify(listCustomStyles)}></${List.TAG}>
-<${TextField.TAG} placeholder="Type expression..." size=${TextFieldSize.L}></${TextField.TAG}>
+<${TextField.TAG} placeholder="Type expression..." size=${ElementSize.L}></${TextField.TAG}>
+<${Button.TAG}></${Button.TAG}>
 `;
 
 export class BinaryExpression extends KKWebComponent {
@@ -33,10 +35,10 @@ export class BinaryExpression extends KKWebComponent {
     constructor() {
         super(template);
         this.setUpElements();
-        const lexicalAnalyzer: LexicalAnalyzer = LexicalAnalyzer.new();
-        console.log(lexicalAnalyzer.expression());
-        lexicalAnalyzer.change_expression();
-        console.log(lexicalAnalyzer.expression());
+        // const lexicalAnalyzer: LexicalAnalyzer = LexicalAnalyzer.new();
+        // console.log(lexicalAnalyzer.expression());
+        // lexicalAnalyzer.change_expression();
+        // console.log(lexicalAnalyzer.expression());
     }
 
     protected setUpElements(): void {
