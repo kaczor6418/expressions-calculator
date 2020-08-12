@@ -10,7 +10,8 @@ import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 import { BinaryExpressionItem } from '../BinaryExpressionItem/BinaryExpressionItem';
 import { KKBinaryExpressionItem } from '../BinaryExpressionItem/interfaces/KKBinaryExpressionItem';
 import { Button } from '../Button/Button';
-// import { LexicalAnalyzer } from '../../../calculator-engine/pkg/calculator_engine';
+// import { IconId } from '../../common/Enums/IconId';
+// import { return_char, return_u8 } from '../../../calculator-engine/pkg/calculator_engine';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)',
@@ -21,7 +22,7 @@ const listCustomStyles: Partial<CSSStyleDeclaration> = {
 const template: string = `
 <${List.TAG} custom-styles=${JSON.stringify(listCustomStyles)}></${List.TAG}>
 <${TextField.TAG} placeholder="Type expression..." size=${ElementSize.L}></${TextField.TAG}>
-<${Button.TAG}></${Button.TAG}>
+<${Button.TAG} text="Dupa" ></${Button.TAG}>
 `;
 
 export class BinaryExpression extends KKWebComponent {
@@ -35,6 +36,8 @@ export class BinaryExpression extends KKWebComponent {
     constructor() {
         super(template);
         this.setUpElements();
+        // console.log(return_char());
+        // console.log(return_u8());
         // const lexicalAnalyzer: LexicalAnalyzer = LexicalAnalyzer.new();
         // console.log(lexicalAnalyzer.expression());
         // lexicalAnalyzer.change_expression();

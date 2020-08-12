@@ -52,7 +52,7 @@ export class TextField extends KKWebComponent implements KKTextField {
 
     public attributeChangedCallback(name: TextFieldObservedAttributes, oldValue: string, newValue: string): void {
         if (oldValue === newValue) {
-            return;
+            return void 0;
         }
         switch (name) {
             case TextFieldObservedAttributes.PLACEHOLDER:

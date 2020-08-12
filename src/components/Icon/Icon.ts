@@ -7,6 +7,7 @@ import { IconObservedAttributes } from './interfaces/IconObservedAttributes';
 import { NotSupportedObservedAttribute } from '../../errors/NotSupportedObservedAttribute';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
 import { iconStyles } from './IconStyles';
+import { Utils } from '../../common/Utils';
 
 const template: string = `
 <style>${iconStyles}</style>
@@ -23,8 +24,14 @@ export class Icon extends KKWebComponent {
 
     private icon!: SVGElement;
 
-    constructor() {
+    constructor(iconId?: IconId | null, href?: string | null) {
         super(template);
+        if (!Utils.isNullOrUndefined(iconId)) {
+            this.addIcon(iconId);
+        }
+        if (!Utils.isNullOrUndefined(href)) {
+            this.setRedirectLinkAndClass(href);
+        }
     }
 
     public attributeChangedCallback(name: IconObservedAttributes, oldValue: string, newValue: string): void {

@@ -1,6 +1,6 @@
 import { MouseEventCallback } from '../../../common/Types';
 
 export interface KKButton {
-    disable: boolean;
+    disabled: boolean;
     setButtonCallback(callback: MouseEventCallback): void;
 }

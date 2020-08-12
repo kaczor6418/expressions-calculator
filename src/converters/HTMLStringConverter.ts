@@ -1,5 +1,5 @@
 import { Utils } from '../common/Utils';
-import { ParseToElementError } from '../errors/ParseToElementError';
+import { ParserError } from '../errors/ParserError';
 
 export class HTMLStringConverter {
     public static toElement<T extends Element>(htmlString: string): T {
@@ -7,7 +7,7 @@ export class HTMLStringConverter {
         wrapper.innerHTML = htmlString;
         const parsedElement: T | null = <T>wrapper.firstElementChild;
         if (Utils.isNullOrUndefined(parsedElement)) {
-            throw new ParseToElementError(`This xml string ${htmlString} is not parsable to Element`);
+            throw new ParserError(`This xml string ${htmlString} is not parsable to Element`);
         }
         return parsedElement;
     }
