@@ -47,4 +47,9 @@ input:focus {
 .input-xl {
     font-size: var(--font-size-xl);
 }
+    
+.input-auto {
+    width: 100%;
+    height: 100%;
+}
 `;

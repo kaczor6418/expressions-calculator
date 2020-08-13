@@ -29,7 +29,7 @@ const template: string = `
 export class BinaryCalculator extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-calculator`;
 
-    private footer: KKAppFooter = <KKAppFooter>(<unknown>this.shadowRoot.querySelector(`${AppFooter.TAG}`));
+    private footer: KKAppFooter = <KKAppFooter>(<unknown>this.shadowRoot.querySelector(AppFooter.TAG));
 
     constructor() {
         super(template);

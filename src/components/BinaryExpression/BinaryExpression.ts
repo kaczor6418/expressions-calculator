@@ -10,8 +10,7 @@ import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 import { BinaryExpressionItem } from '../BinaryExpressionItem/BinaryExpressionItem';
 import { KKBinaryExpressionItem } from '../BinaryExpressionItem/interfaces/KKBinaryExpressionItem';
 import { Button } from '../Button/Button';
-// import { IconId } from '../../common/Enums/IconId';
-// import { return_char, return_u8 } from '../../../calculator-engine/pkg/calculator_engine';
+import { ButtonObservedAttributes } from '../Button/interfaces/ButtonObservedAttributes';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)',
@@ -22,26 +21,23 @@ const listCustomStyles: Partial<CSSStyleDeclaration> = {
 const template: string = `
 <${List.TAG} custom-styles=${JSON.stringify(listCustomStyles)}></${List.TAG}>
 <${TextField.TAG} placeholder="Type expression..." size=${ElementSize.L}></${TextField.TAG}>
-<${Button.TAG} text="Dupa" ></${Button.TAG}>
+<div>
+<${Button.TAG} text="DUPA 1"></${Button.TAG}>
+<${Button.TAG} text="DUPA 2" ${ButtonObservedAttributes.AUTO_FIT}></${Button.TAG}>
+</div>
 `;
 
 export class BinaryExpression extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-expression`;
 
-    private readonly kkTextField: KKTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(`${TextField.TAG}`));
+    private readonly kkTextField: KKTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(TextField.TAG));
     private readonly kkList: KKList<BinaryExpressionItem> = <KKList<BinaryExpressionItem>>(
-        (<unknown>this.shadowRoot.querySelector(`${List.TAG}`))
+        (<unknown>this.shadowRoot.querySelector(List.TAG))
     );
 
     constructor() {
         super(template);
         this.setUpElements();
-        // console.log(return_char());
-        // console.log(return_u8());
-        // const lexicalAnalyzer: LexicalAnalyzer = LexicalAnalyzer.new();
-        // console.log(lexicalAnalyzer.expression());
-        // lexicalAnalyzer.change_expression();
-        // console.log(lexicalAnalyzer.expression());
     }
 
     protected setUpElements(): void {
