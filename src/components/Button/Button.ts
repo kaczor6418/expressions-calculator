@@ -4,13 +4,16 @@ import { KKButton } from './interfaces/KKButton';
 import { MouseEventCallback } from '../../common/Types';
 import { ButtonObservedAttributes } from './interfaces/ButtonObservedAttributes';
 import { NotSupportedObservedAttribute } from '../../errors/NotSupportedObservedAttribute';
-import { StringBooleanConverter } from '../../converters/StringBooleanConverter';
 import { IconId } from '../../common/Enums/IconId';
 import { Icon } from '../Icon/Icon';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
+import { buttonStyles } from './ButtonStyles';
 
 const template: string = `
-<button type="button"></button>
+<style>${buttonStyles}</style>
+<button type="button">
+  <slot name="icon"></slot>
+</button>
 `;
 
 export class Button extends KKWebComponent implements KKButton {
@@ -40,7 +43,7 @@ export class Button extends KKWebComponent implements KKButton {
         }
         switch (name) {
             case ButtonObservedAttributes.DISABLED:
-                this.disabled = StringBooleanConverter.toBoolean(newValue);
+                this.button.toggleAttribute('disabled');
                 break;
             case ButtonObservedAttributes.ICON:
                 this.addIcon(EnumValueEnumConverter.toEnumFromKey(newValue, IconId));
@@ -49,6 +52,9 @@ export class Button extends KKWebComponent implements KKButton {
                 break;
             case ButtonObservedAttributes.TEXT:
                 this.button.textContent = newValue;
+                break;
+            case ButtonObservedAttributes.AUTO_FIT:
+                this.button.style.height = '100%';
                 break;
             default:
                 throw new NotSupportedObservedAttribute(`Attribute: ${name} doesn't exist in ${Button.name} component`);
@@ -59,7 +65,7 @@ export class Button extends KKWebComponent implements KKButton {
         this.button.addEventListener('click', callback);
     }
 
-    public addIcon(iconId: IconId): void {
+    private addIcon(iconId: IconId): void {
         const icon: Icon = new Icon(iconId);
         this.button.appendChild(icon);
     }
