@@ -5,14 +5,14 @@ import { HTMLStringConverter } from '../../converters/HTMLStringConverter';
 import { IconNotFoundError } from '../../errors/IconNotFoundError';
 
 export namespace IconDefinitions {
-    const iconIds: Map<IconId, SVGElement> = new Map<IconId, SVGElement>();
-    iconIds.set(IconId.LOGO, HTMLStringConverter.toElement(logo));
-    iconIds.set(IconId.GITHUB, HTMLStringConverter.toElement(github));
+    const iconIds: Map<IconId, string> = new Map<IconId, string>();
+    iconIds.set(IconId.LOGO, logo);
+    iconIds.set(IconId.GITHUB, github);
 
     export function getIcon(iconId: IconId): SVGElement {
-        const icon: SVGElement | undefined = iconIds.get(iconId);
+        const icon: string | undefined = iconIds.get(iconId);
         if (!Utils.isNullOrUndefined(icon)) {
-            return icon;
+            return HTMLStringConverter.toElement(icon);
         }
         throw new IconNotFoundError(`Icon: ${iconId} doesn't exist in icon definitions`);
     }
