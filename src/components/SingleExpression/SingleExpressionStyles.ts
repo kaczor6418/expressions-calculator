@@ -1,5 +1,5 @@
 //language=CSS
-export const binaryExpressionItemStyles: string = `
+export const singleExpressionStyles: string = `
 p {
     margin: 0;
     padding: var(--spacing-m);

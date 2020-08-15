@@ -1,9 +1,9 @@
 import { KKWebComponent } from './components/KKWebComponent/KKWebComponent';
 import { CONSTANTS } from './common/CONSTANTS';
-import { BinaryCalculator } from './views/BinaryCalculator/BinaryCalculator';
+import { Calculator } from './views/Calculator/Calculator';
 
 const template: string = `
-<${BinaryCalculator.TAG}></${BinaryCalculator.TAG}>
+<${Calculator.TAG}></${Calculator.TAG}>
 `;
 
 export class App extends KKWebComponent {

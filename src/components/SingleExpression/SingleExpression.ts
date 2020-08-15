@@ -1,19 +1,20 @@
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { CONSTANTS } from '../../common/CONSTANTS';
-import { KKBinaryExpressionItem } from './interfaces/KKBinaryExpressionItem';
-import { binaryExpressionItemStyles } from './BinaryExpressionItemStyles';
+import { KKSingleExpression } from './interfaces/KKSingleExpression';
+import { singleExpressionStyles } from './SingleExpressionStyles';
 import { Utils } from '../../common/Utils';
 import { ValueUnset } from '../../errors/ValueUnset';
+import { MouseEventCallback } from '../../common/Types';
 
 const template: string = `
-<style>${binaryExpressionItemStyles}</style>
+<style>${singleExpressionStyles}</style>
 <p>
     <var></var> = <mark></mark>
 </p>
 `;
 
-export class BinaryExpressionItem extends KKWebComponent implements KKBinaryExpressionItem {
-    public static TAG: string = `${CONSTANTS.TAG_PREFIX}-binary-expression-tem`;
+export class SingleExpression extends KKWebComponent implements KKSingleExpression {
+    public static TAG: string = `${CONSTANTS.TAG_PREFIX}-single-expression`;
 
     private readonly expression: HTMLElement = <HTMLElement>this.shadowRoot.querySelector('var');
     private readonly score: HTMLElement = <HTMLElement>this.shadowRoot.querySelector('mark');
@@ -24,28 +25,28 @@ export class BinaryExpressionItem extends KKWebComponent implements KKBinaryExpr
         super(template);
     }
 
-    set expressionValue(value: string) {
+    set expressionOperation(value: string) {
         this.expression.textContent = value;
     }
 
-    get expressionValue(): string {
+    get expressionOperation(): string {
         return this.expression.textContent ?? '';
     }
 
-    get scoreValue(): number {
+    get expressionScore(): number {
         if (Utils.isNullOrUndefined(this.value)) {
-            throw new ValueUnset(`Value of ${BinaryExpressionItem.name} has not been set!`);
+            throw new ValueUnset(`Value of ${SingleExpression.name} has not been set!`);
         }
         return this.value;
     }
 
-    set scoreValue(value: number) {
+    set expressionScore(value: number) {
         this.value = value;
         this.score.textContent = value.toString();
     }
 
-    public setScoreCallback(callback: (e?: MouseEvent) => void): void {
+    public setScoreCallback(callback: MouseEventCallback): void {
         this.score.addEventListener('click', callback);
     }
 }
-customElements.define(BinaryExpressionItem.TAG, BinaryExpressionItem);
+customElements.define(SingleExpression.TAG, SingleExpression);
