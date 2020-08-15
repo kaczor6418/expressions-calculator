@@ -12,22 +12,21 @@ import { KKSingleExpression } from '../SingleExpression/interfaces/KKSingleExpre
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)',
-    maxHeight: '70%',
+    maxHeight: '40%',
     overflowY: 'auto'
 };
 
 const template: string = `
 <${List.TAG} custom-styles=${JSON.stringify(listCustomStyles)}></${List.TAG}>
 <${TextField.TAG} placeholder="Type expression..." size=${ElementSize.L}></${TextField.TAG}>
+
 `;
 
 export class CalculatorDisplay extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-calculator-display`;
 
     private readonly kkTextField: KKTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(TextField.TAG));
-    private readonly kkList: KKList<SingleExpression> = <KKList<SingleExpression>>(
-        (<unknown>this.shadowRoot.querySelector(List.TAG))
-    );
+    private readonly kkList: KKList<SingleExpression> = <KKList<SingleExpression>>(<unknown>this.shadowRoot.querySelector(List.TAG));
 
     constructor() {
         super(template);

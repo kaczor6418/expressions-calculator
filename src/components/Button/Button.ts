@@ -30,9 +30,10 @@ export class Button extends KKWebComponent implements KKButton {
     private _disabled: boolean = false;
     private size: ElementSize = ElementSize.M;
 
-    constructor() {
+    constructor(props?: Record<keyof typeof ButtonObservedAttributes, string>) {
         super(template);
         this.setButtonSize('width');
+        this.initialize<ButtonObservedAttributes>(props);
     }
 
     set disabled(disabled: boolean) {

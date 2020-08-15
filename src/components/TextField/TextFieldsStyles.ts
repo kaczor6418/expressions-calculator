@@ -1,5 +1,9 @@
 //language=CSS
 export const textFieldsStyles: string = `    
+div {
+    box-shadow: inherit;
+}
+
 label {
     overflow: hidden;
     text-overflow: ellipsis;

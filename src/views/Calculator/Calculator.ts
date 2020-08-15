@@ -10,6 +10,10 @@ import { AppBody } from '../../layouts/AppBody/AppBody';
 import { CalculatorDisplay } from '../../components/CalculatorDisplay/CalculatorDisplay';
 import { AppFooter } from '../../layouts/AppFooter/AppFooter';
 import { AppHeader } from '../../layouts/AppHeader/AppHeader';
+import { CalculatorKeyboard } from '../../components/CalcuatorKeayboard/CalculatorKeyboard';
+import { KKCalculatorKeyboard } from '../../components/CalcuatorKeayboard/interfaces/KKCalculatorKeyboard';
+import {Button} from "../../components/Button/Button";
+import {KKButton} from "../../components/Button/interfaces/KKButton";
 
 const template: string = `
 <style>${calculatorStyles}</style>
@@ -21,6 +25,7 @@ const template: string = `
   </${AppHeader.TAG}>
   <${AppBody.TAG}>
     <${CalculatorDisplay.TAG}></${CalculatorDisplay.TAG}>
+    <${CalculatorKeyboard.TAG}></${CalculatorKeyboard.TAG}>
   </${AppBody.TAG}>
   <${AppFooter.TAG}></${AppFooter.TAG}>
 </main>
@@ -30,6 +35,9 @@ export class Calculator extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-calculator`;
 
     private footer: KKAppFooter = <KKAppFooter>(<unknown>this.shadowRoot.querySelector(AppFooter.TAG));
+    private kkCalculatorKeyboard: KKCalculatorKeyboard = <KKCalculatorKeyboard>(
+        (<unknown>this.shadowRoot.querySelector(CalculatorKeyboard.TAG))
+    );
 
     constructor() {
         super(template);
@@ -37,11 +45,22 @@ export class Calculator extends KKWebComponent {
     }
 
     protected setUpElements(): void {
+        this.kkCalculatorKeyboard.values = ['0', '1'];
+        this.kkCalculatorKeyboard.values = ['-', '+', '*'];
         this.footer.setCopyright({
             date: '2020',
             author: 'Krzysztof Kaczyński',
             termsReferenceUrl: 'https://www.google.com'
         });
+    }
+
+    private createButtons(values: string[]): Button[] {
+        const buttons: KKButton[] = [];
+        for (const value of values) {
+            const valueButton: KKButton = new Button({
+
+            });
+        }
     }
 }
 customElements.define(Calculator.TAG, Calculator);
