@@ -9,8 +9,6 @@ import { TextField } from '../TextField/TextField';
 import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 import { BinaryExpressionItem } from '../BinaryExpressionItem/BinaryExpressionItem';
 import { KKBinaryExpressionItem } from '../BinaryExpressionItem/interfaces/KKBinaryExpressionItem';
-import { Button } from '../Button/Button';
-import { ButtonObservedAttributes } from '../Button/interfaces/ButtonObservedAttributes';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)',
@@ -21,10 +19,6 @@ const listCustomStyles: Partial<CSSStyleDeclaration> = {
 const template: string = `
 <${List.TAG} custom-styles=${JSON.stringify(listCustomStyles)}></${List.TAG}>
 <${TextField.TAG} placeholder="Type expression..." size=${ElementSize.L}></${TextField.TAG}>
-<div>
-<${Button.TAG} text="DUPA 1"></${Button.TAG}>
-<${Button.TAG} text="DUPA 2" ${ButtonObservedAttributes.AUTO_FIT}></${Button.TAG}>
-</div>
 `;
 
 export class BinaryExpression extends KKWebComponent {

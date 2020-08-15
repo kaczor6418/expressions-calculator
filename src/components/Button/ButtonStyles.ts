@@ -1,14 +1,14 @@
 //language=CSS
 export const buttonStyles: string = `
 button {
-    width: 100%;
     outline: none;
     cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--color-text);
     font-size: var(--font-size-m);
-    padding: var(--spacing-m);
     background-color: var(--color-accent-2-inactive);
     border: 2px dashed var(--color-accent-1-inactive);
     
@@ -25,5 +25,9 @@ button:hover:enabled {
 
 button:disabled {
     cursor: not-allowed;
+}
+    
+.shadow-around {
+    box-shadow: var(--shadow-around);
 }
 `;
