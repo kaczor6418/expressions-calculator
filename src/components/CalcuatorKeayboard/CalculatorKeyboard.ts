@@ -9,15 +9,35 @@ import { TextField } from '../TextField/TextField';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
 import { KKList } from '../List/interfaces/KKList';
 import { Button } from '../Button/Button';
+import { calculatorKeyboardStyles } from './CalculatorKeyboardStyles';
+import { ListObservedAttributes } from '../List/interfaces/ListObservedAttributes';
+import { Divider } from '../Divider/Divider';
+
+const listCustomStyles: Partial<CSSStyleDeclaration> = {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'stretch',
+    alignItems: 'space-around'
+};
 
 const template: string = `
-<${List.TAG} id="values"></${List.TAG}>
-<${List.TAG} id="operators"></${List.TAG}>
+<style>${calculatorKeyboardStyles}</style>
+<div>
+  <${List.TAG} id="values" ${ListObservedAttributes.CUSTOM_STYLES}=${JSON.stringify(listCustomStyles)} ${
+    ListObservedAttributes.ITEM_GAP
+}="var(--spacing-m)"></${List.TAG}>
+  <${Divider.TAG}></${Divider.TAG}>
+  <${List.TAG} id="operators" ${ListObservedAttributes.CUSTOM_STYLES}=${JSON.stringify(listCustomStyles)} ${
+    ListObservedAttributes.ITEM_GAP
+}="var(--spacing-m)"></${List.TAG}>
+</div>
 `;
 
 export class CalculatorKeyboard extends KKWebComponent implements KKCalculatorKeyboard {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-calculator-keyboard`;
+    public static observedAttributes: CalculatorKeyboardObservedAttributes[] = Object.values(CalculatorKeyboardObservedAttributes);
 
+    private readonly keyboardWrapper: HTMLDivElement = <HTMLDivElement>this.shadowRoot.querySelector('div');
     private readonly kkValuesList: KKList<Button> = <KKList<Button>>(<unknown>this.shadowRoot.querySelector('#values'));
     private readonly kkOperatorsList: KKList<Button> = <KKList<Button>>(<unknown>this.shadowRoot.querySelector('#operators'));
 
@@ -55,7 +75,7 @@ export class CalculatorKeyboard extends KKWebComponent implements KKCalculatorKe
     }
 
     public setLayout(layout: CalculatorKeyboardLayout): void {
-        console.log('super :D', layout);
+        this.keyboardWrapper.className = layout;
     }
 }
 customElements.define(CalculatorKeyboard.TAG, CalculatorKeyboard);
