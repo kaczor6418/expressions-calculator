@@ -50,8 +50,8 @@ export class Calculator extends KKWebComponent {
     }
 
     protected setUpElements(): void {
-        this.kkCalculatorKeyboard.values = this.createButtons(['0', '1']);
-        this.kkCalculatorKeyboard.operators = this.createButtons(['-', '+', '*']);
+        this.kkCalculatorKeyboard.values = this.createButtons(CONSTANTS.BINARY_VALUES);
+        this.kkCalculatorKeyboard.operators = this.createButtons(CONSTANTS.BINARY_OPERATORS);
         this.footer.setCopyright({
             date: '2020',
             author: 'Krzysztof Kaczyński',
