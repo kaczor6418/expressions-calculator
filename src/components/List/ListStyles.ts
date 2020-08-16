@@ -20,4 +20,8 @@ ul::-webkit-scrollbar-thumb {
     background-image: linear-gradient(0deg, var(--color-accent-1) 0%, var(--color-accent-2) 100%);
 }
 
+li {
+ flex: 1;
+}
+
 `;

@@ -17,6 +17,7 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
 
     private readonly listWrapper: HTMLUListElement = <HTMLUListElement>this.shadowRoot.querySelector('ul');
 
+    private itemGap: string = 'unset';
     private listElements: T[] = [];
 
     constructor() {
@@ -42,6 +43,9 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
             case ListObservedAttributes.CUSTOM_STYLES:
                 this.setListCustomStyles(JSONCSSStyleDeclarationConverter.toCssStyleDeclaration(newValue));
                 break;
+            case ListObservedAttributes.ITEM_GAP:
+                this.itemGap = newValue;
+                break;
             default:
                 throw new NotSupportedObservedAttribute(`Attribute: ${name} doesn't exist in ${List.name} component`);
         }
@@ -55,6 +59,7 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
     private appendListElement(element: T): void {
         const li: HTMLLIElement = document.createElement('li');
         li.appendChild(element);
+        li.style.padding = this.itemGap;
         this.listWrapper.appendChild(li);
     }
 
