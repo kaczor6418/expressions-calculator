@@ -12,8 +12,10 @@ import { AppFooter } from '../../layouts/AppFooter/AppFooter';
 import { AppHeader } from '../../layouts/AppHeader/AppHeader';
 import { CalculatorKeyboard } from '../../components/CalcuatorKeayboard/CalculatorKeyboard';
 import { KKCalculatorKeyboard } from '../../components/CalcuatorKeayboard/interfaces/KKCalculatorKeyboard';
-import {Button} from "../../components/Button/Button";
-import {KKButton} from "../../components/Button/interfaces/KKButton";
+import { Button } from '../../components/Button/Button';
+import { KKCalculatorDisplay } from '../../components/CalculatorDisplay/interfaces/KKCalculatorDisplay';
+import { CalculatorKeyboardObservedAttributes } from '../../components/CalcuatorKeayboard/interfaces/CalculatorKeyboardObservedAttributes';
+import { CalculatorKeyboardLayout } from '../../components/CalcuatorKeayboard/interfaces/CalculatorKeyboardLayout';
 
 const template: string = `
 <style>${calculatorStyles}</style>
@@ -25,7 +27,7 @@ const template: string = `
   </${AppHeader.TAG}>
   <${AppBody.TAG}>
     <${CalculatorDisplay.TAG}></${CalculatorDisplay.TAG}>
-    <${CalculatorKeyboard.TAG}></${CalculatorKeyboard.TAG}>
+    <${CalculatorKeyboard.TAG} ${CalculatorKeyboardObservedAttributes.LAYOUT}=${CalculatorKeyboardLayout.VERTICAL}></${CalculatorKeyboard.TAG}>
   </${AppBody.TAG}>
   <${AppFooter.TAG}></${AppFooter.TAG}>
 </main>
@@ -35,7 +37,10 @@ export class Calculator extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-calculator`;
 
     private footer: KKAppFooter = <KKAppFooter>(<unknown>this.shadowRoot.querySelector(AppFooter.TAG));
-    private kkCalculatorKeyboard: KKCalculatorKeyboard = <KKCalculatorKeyboard>(
+    private readonly kkCalculatorDisplay: KKCalculatorDisplay = <KKCalculatorDisplay>(
+        (<unknown>this.shadowRoot.querySelector(CalculatorDisplay.TAG))
+    );
+    private readonly kkCalculatorKeyboard: KKCalculatorKeyboard = <KKCalculatorKeyboard>(
         (<unknown>this.shadowRoot.querySelector(CalculatorKeyboard.TAG))
     );
 
@@ -45,8 +50,8 @@ export class Calculator extends KKWebComponent {
     }
 
     protected setUpElements(): void {
-        this.kkCalculatorKeyboard.values = ['0', '1'];
-        this.kkCalculatorKeyboard.values = ['-', '+', '*'];
+        this.kkCalculatorKeyboard.values = this.createButtons(['0', '1']);
+        this.kkCalculatorKeyboard.operators = this.createButtons(['-', '+', '*']);
         this.footer.setCopyright({
             date: '2020',
             author: 'Krzysztof Kaczyński',
@@ -55,12 +60,18 @@ export class Calculator extends KKWebComponent {
     }
 
     private createButtons(values: string[]): Button[] {
-        const buttons: KKButton[] = [];
+        const buttons: Button[] = [];
         for (const value of values) {
-            const valueButton: KKButton = new Button({
-
+            const valueButton: Button = new Button({
+                TEXT: value,
+                AUTO_FIT: 'true'
             });
+            valueButton.setButtonCallback(() => {
+                this.kkCalculatorDisplay.displayValue = `${this.kkCalculatorDisplay.displayValue}${value}`;
+            });
+            buttons.push(valueButton);
         }
+        return buttons;
     }
 }
 customElements.define(Calculator.TAG, Calculator);

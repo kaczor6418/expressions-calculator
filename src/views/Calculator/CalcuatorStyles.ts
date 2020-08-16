@@ -19,4 +19,12 @@ kk-app-footer {
     grid-row: app-footer / app-footer;
     box-shadow: var(--shadow-top);
 }
+
+kk-calculator-display {
+    max-height: 40%;
+}
+    
+kk-calculator-kyboard {
+    max-height: 60%;
+}
 `;
