@@ -9,6 +9,7 @@ button {
     text-overflow: ellipsis;
     color: var(--color-text);
     font-size: var(--font-size-m);
+    padding: var(--spacing-m);
     background-color: var(--color-accent-2-inactive);
     border: 2px dashed var(--color-accent-1-inactive);
     

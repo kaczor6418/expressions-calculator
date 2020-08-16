@@ -30,10 +30,9 @@ export class Button extends KKWebComponent implements KKButton {
     private _disabled: boolean = false;
     private size: ElementSize = ElementSize.M;
 
-    constructor(props?: Record<keyof typeof ButtonObservedAttributes, string>) {
-        super(template);
+    constructor(props?: Record<any, string>) {
+        super(template, props);
         this.setButtonSize('width');
-        this.initialize<ButtonObservedAttributes>(props);
     }
 
     set disabled(disabled: boolean) {
@@ -71,6 +70,7 @@ export class Button extends KKWebComponent implements KKButton {
                 break;
             case ButtonObservedAttributes.AUTO_FIT:
                 this.button.style.height = '100%';
+                this.button.style.width = '100%';
                 break;
             default:
                 throw new NotSupportedObservedAttribute(`Attribute: ${name} doesn't exist in ${Button.name} component`);
