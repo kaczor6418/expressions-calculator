@@ -9,6 +9,7 @@ import { TextField } from '../TextField/TextField';
 import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 import { SingleExpression } from '../SingleExpression/SingleExpression';
 import { KKSingleExpression } from '../SingleExpression/interfaces/KKSingleExpression';
+import { KKCalculatorDisplay } from './interfaces/KKCalculatorDisplay';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)',
@@ -19,10 +20,9 @@ const listCustomStyles: Partial<CSSStyleDeclaration> = {
 const template: string = `
 <${List.TAG} custom-styles=${JSON.stringify(listCustomStyles)}></${List.TAG}>
 <${TextField.TAG} placeholder="Type expression..." size=${ElementSize.L}></${TextField.TAG}>
-
 `;
 
-export class CalculatorDisplay extends KKWebComponent {
+export class CalculatorDisplay extends KKWebComponent implements KKCalculatorDisplay {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-calculator-display`;
 
     private readonly kkTextField: KKTextField = <KKTextField>(<unknown>this.shadowRoot.querySelector(TextField.TAG));
@@ -31,6 +31,14 @@ export class CalculatorDisplay extends KKWebComponent {
     constructor() {
         super(template);
         this.setUpElements();
+    }
+
+    get displayValue(): string {
+        return this.kkTextField.value;
+    }
+
+    set displayValue(value: string) {
+        this.kkTextField.value = value;
     }
 
     protected setUpElements(): void {
