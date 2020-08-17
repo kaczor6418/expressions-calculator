@@ -36,8 +36,7 @@ export class TextField extends KKWebComponent implements KKTextField {
     private readonly input: HTMLInputElement = <HTMLInputElement>this.textFieldContainer.querySelector('input');
 
     constructor(props?: KKWebComponentProps<keyof typeof TextFieldObservedAttributes>) {
-        super(template);
-        this.initialize(props);
+        super(template, props);
     }
 
     get lastChar(): string {

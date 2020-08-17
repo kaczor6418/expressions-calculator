@@ -32,8 +32,7 @@ export class Button extends KKWebComponent implements KKButton {
     private size: ElementSize = ElementSize.M;
 
     constructor(props?: KKWebComponentProps<keyof typeof ButtonObservedAttributes>) {
-        super(template);
-        this.initialize(props);
+        super(template, props);
         this.setButtonSize('width');
     }
 

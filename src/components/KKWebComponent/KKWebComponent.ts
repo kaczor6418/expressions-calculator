@@ -3,19 +3,22 @@ import { WebComponentLifecycle } from './interface/WebComponentLifecycle';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponentProps } from './interface/KKWebComponentProps';
 
-export abstract class KKWebComponent extends HTMLElement implements WebComponentLifecycle {
+export abstract class KKWebComponent<T extends string = string> extends HTMLElement implements WebComponentLifecycle {
     public readonly shadowRoot!: ShadowRoot;
 
-    protected constructor(template: string) {
+    private readonly props: KKWebComponentProps<T> | undefined = undefined;
+
+    protected constructor(template: string, props?: KKWebComponentProps<T>) {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = template;
+        this.props = props;
         Utils.injectGlobalStyles(this.shadowRoot);
     }
 
-    protected initialize<T extends string>(props: KKWebComponentProps<T> | undefined): void {
-        if (!Utils.isNullOrUndefined(props)) {
-            for (const [key, value] of Object.entries(props)) {
+    protected initialize(): void {
+        if (!Utils.isNullOrUndefined(this.props)) {
+            for (const [key, value] of Object.entries(this.props)) {
                 this.setAttribute(key.toLowerCase().replace(CONSTANTS.ENUM_DELIMITER, CONSTANTS.COMPONENT_TAG_DELIMITER), <string>value);
             }
         }
@@ -29,7 +32,7 @@ export abstract class KKWebComponent extends HTMLElement implements WebComponent
     }
 
     public connectedCallback(): void {
-        return void 0;
+        this.initialize();
     }
 
     public disconnectedCallback(): void {

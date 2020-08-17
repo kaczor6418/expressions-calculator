@@ -22,8 +22,7 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
     private listElements: T[] = [];
 
     constructor(props?: KKWebComponentProps<keyof typeof ListObservedAttributes>) {
-        super(template);
-        this.initialize(props);
+        super(template, props);
     }
 
     get elements(): T[] {

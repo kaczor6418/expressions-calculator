@@ -43,8 +43,7 @@ export class CalculatorKeyboard extends KKWebComponent implements KKCalculatorKe
     private readonly kkOperatorsList: KKList<Button> = <KKList<Button>>(<unknown>this.shadowRoot.querySelector('#operators'));
 
     constructor(props?: KKWebComponentProps<keyof typeof CalculatorKeyboardObservedAttributes>) {
-        super(template);
-        this.initialize(props);
+        super(template, props);
     }
 
     set values(values: Button[]) {

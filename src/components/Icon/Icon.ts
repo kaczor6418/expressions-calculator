@@ -25,8 +25,7 @@ export class Icon extends KKWebComponent {
     private icon!: SVGElement;
 
     constructor(props?: KKWebComponentProps<keyof typeof IconObservedAttributes>) {
-        super(template);
-        this.initialize(props);
+        super(template, props);
     }
 
     public attributeChangedCallback(name: IconObservedAttributes, oldValue: string, newValue: string): void {
