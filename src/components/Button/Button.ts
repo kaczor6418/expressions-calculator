@@ -11,6 +11,7 @@ import { buttonStyles } from './ButtonStyles';
 import { ElementSize } from '../../common/Enums/ElementSize';
 import { NotSupportedSize } from '../../errors/NotSupportedSize';
 import { Shape } from '../../common/Enums/Shape';
+import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentProps';
 
 const template: string = `
 <style>${buttonStyles}</style>
@@ -30,8 +31,9 @@ export class Button extends KKWebComponent implements KKButton {
     private _disabled: boolean = false;
     private size: ElementSize = ElementSize.M;
 
-    constructor(props?: Record<any, string>) {
-        super(template, props);
+    constructor(props?: KKWebComponentProps<keyof typeof ButtonObservedAttributes>) {
+        super(template);
+        this.initialize(props);
         this.setButtonSize('width');
     }
 
@@ -82,7 +84,9 @@ export class Button extends KKWebComponent implements KKButton {
     }
 
     private addIcon(iconId: IconId): void {
-        const icon: Icon = new Icon(iconId);
+        const icon: Icon = new Icon({
+            ICON_ID: iconId
+        });
         this.button.appendChild(icon);
     }
 

@@ -5,6 +5,7 @@ import { ListObservedAttributes } from './interfaces/ListObservedAttributes';
 import { NotSupportedObservedAttribute } from '../../errors/NotSupportedObservedAttribute';
 import { JSONCSSStyleDeclarationConverter } from '../../converters/JSONCSSStyleDeclarationConverter';
 import { KKList } from './interfaces/KKList';
+import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentProps';
 
 const template: string = `
 <style>${listStyles}</style>
@@ -20,8 +21,9 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
     private itemGap: string = 'unset';
     private listElements: T[] = [];
 
-    constructor() {
+    constructor(props?: KKWebComponentProps<keyof typeof ListObservedAttributes>) {
         super(template);
+        this.initialize(props);
     }
 
     get elements(): T[] {

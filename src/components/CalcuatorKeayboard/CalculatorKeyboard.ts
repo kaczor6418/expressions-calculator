@@ -12,6 +12,7 @@ import { Button } from '../Button/Button';
 import { calculatorKeyboardStyles } from './CalculatorKeyboardStyles';
 import { ListObservedAttributes } from '../List/interfaces/ListObservedAttributes';
 import { Divider } from '../Divider/Divider';
+import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentProps';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     width: '100%',
@@ -41,8 +42,9 @@ export class CalculatorKeyboard extends KKWebComponent implements KKCalculatorKe
     private readonly kkValuesList: KKList<Button> = <KKList<Button>>(<unknown>this.shadowRoot.querySelector('#values'));
     private readonly kkOperatorsList: KKList<Button> = <KKList<Button>>(<unknown>this.shadowRoot.querySelector('#operators'));
 
-    constructor() {
+    constructor(props?: KKWebComponentProps<keyof typeof CalculatorKeyboardObservedAttributes>) {
         super(template);
+        this.initialize(props);
     }
 
     set values(values: Button[]) {

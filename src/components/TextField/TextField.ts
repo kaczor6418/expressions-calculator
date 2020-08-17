@@ -13,6 +13,7 @@ import {
     TextFieldListenerProps
 } from './interface/TextFieldListenerProps';
 import { KKTextField } from './interface/KKTextField';
+import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentProps';
 
 const template: string = `
 <style>${textFieldsStyles}</style>
@@ -34,8 +35,9 @@ export class TextField extends KKWebComponent implements KKTextField {
     private readonly textFieldContainer: HTMLDivElement = <HTMLDivElement>this.shadowRoot.querySelector('div');
     private readonly input: HTMLInputElement = <HTMLInputElement>this.textFieldContainer.querySelector('input');
 
-    constructor() {
+    constructor(props?: KKWebComponentProps<keyof typeof TextFieldObservedAttributes>) {
         super(template);
+        this.initialize(props);
     }
 
     get lastChar(): string {

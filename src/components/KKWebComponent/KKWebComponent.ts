@@ -1,23 +1,23 @@
 import { Utils } from '../../common/Utils';
 import { WebComponentLifecycle } from './interface/WebComponentLifecycle';
 import { CONSTANTS } from '../../common/CONSTANTS';
+import { KKWebComponentProps } from './interface/KKWebComponentProps';
 
 export abstract class KKWebComponent extends HTMLElement implements WebComponentLifecycle {
     public readonly shadowRoot!: ShadowRoot;
 
-    private readonly props: Record<any, string> | undefined = undefined;
-
-    protected constructor(template: string, props?: Record<any, string>) {
+    protected constructor(template: string) {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = template;
-        this.props = props;
         Utils.injectGlobalStyles(this.shadowRoot);
     }
 
-    private initialize(props: Record<any, string>): void {
-        for (const [key, value] of Object.entries(props)) {
-            this.setAttribute(key.toLowerCase().replace(CONSTANTS.ENUM_DELIMITER, CONSTANTS.COMPONENT_TAG_DELIMITER), value);
+    protected initialize<T extends string>(props: KKWebComponentProps<T> | undefined): void {
+        if (!Utils.isNullOrUndefined(props)) {
+            for (const [key, value] of Object.entries(props)) {
+                this.setAttribute(key.toLowerCase().replace(CONSTANTS.ENUM_DELIMITER, CONSTANTS.COMPONENT_TAG_DELIMITER), <string>value);
+            }
         }
     }
 
@@ -29,9 +29,7 @@ export abstract class KKWebComponent extends HTMLElement implements WebComponent
     }
 
     public connectedCallback(): void {
-        if (!Utils.isNullOrUndefined(this.props)) {
-            this.initialize(this.props);
-        }
+        return void 0;
     }
 
     public disconnectedCallback(): void {
