@@ -16,6 +16,7 @@ import { Button } from '../../components/Button/Button';
 import { KKCalculatorDisplay } from '../../components/CalculatorDisplay/interfaces/KKCalculatorDisplay';
 import { CalculatorKeyboardObservedAttributes } from '../../components/CalcuatorKeayboard/interfaces/CalculatorKeyboardObservedAttributes';
 import { CalculatorKeyboardLayout } from '../../components/CalcuatorKeayboard/interfaces/CalculatorKeyboardLayout';
+import { ButtonSize } from '../../components/Button/interfaces/ButtonSize';
 
 const template: string = `
 <style>${calculatorStyles}</style>
@@ -64,7 +65,8 @@ export class Calculator extends KKWebComponent {
         for (const value of values) {
             const valueButton: Button = new Button({
                 TEXT: value,
-                AUTO_FIT: 'true'
+                AUTO_FIT: 'true',
+                MIN_WIDTH: ButtonSize.S
             });
             valueButton.setButtonCallback(() => {
                 this.kkCalculatorDisplay.displayValue = `${this.kkCalculatorDisplay.displayValue}${value}`;

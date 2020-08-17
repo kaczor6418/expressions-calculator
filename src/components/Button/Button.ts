@@ -12,6 +12,7 @@ import { ElementSize } from '../../common/Enums/ElementSize';
 import { NotSupportedSize } from '../../errors/NotSupportedSize';
 import { Shape } from '../../common/Enums/Shape';
 import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentProps';
+import { ButtonSize } from './interfaces/ButtonSize';
 
 const template: string = `
 <style>${buttonStyles}</style>
@@ -46,15 +47,19 @@ export class Button extends KKWebComponent implements KKButton {
     }
 
     public attributeChangedCallback(name: ButtonObservedAttributes, oldValue: string, newValue: string): void {
-        if (oldValue === newValue) {
-            return void 0;
-        }
         switch (name) {
+            case ButtonObservedAttributes.AUTO_FIT:
+                this.button.style.height = '100%';
+                this.button.style.width = '100%';
+                break;
             case ButtonObservedAttributes.DISABLED:
                 this.button.toggleAttribute('disabled');
                 break;
             case ButtonObservedAttributes.ICON:
-                this.addIcon(EnumValueEnumConverter.toEnumFromKey(newValue, IconId));
+                this.addIcon(EnumValueEnumConverter.toEnumFromValue(newValue, IconId));
+                break;
+            case ButtonObservedAttributes.MIN_WIDTH:
+                this.button.style.minWidth = EnumValueEnumConverter.toEnumFromValue(newValue, ButtonSize);
                 break;
             case ButtonObservedAttributes.SHADOW:
                 this.button.classList.add(Button.SHADOW_AROUND_CLASS);
@@ -69,12 +74,11 @@ export class Button extends KKWebComponent implements KKButton {
             case ButtonObservedAttributes.TEXT:
                 this.button.textContent = newValue;
                 break;
-            case ButtonObservedAttributes.AUTO_FIT:
-                this.button.style.height = '100%';
-                this.button.style.width = '100%';
-                break;
             default:
                 throw new NotSupportedObservedAttribute(`Attribute: ${name} doesn't exist in ${Button.name} component`);
+        }
+        if (oldValue === newValue) {
+            return void 0;
         }
     }
 
@@ -99,19 +103,19 @@ export class Button extends KKWebComponent implements KKButton {
     private setButtonSize(qualifiedName: Extract<keyof CSSStyleDeclaration, 'width' | 'height'>) {
         switch (this.size) {
             case ElementSize.L:
-                this.button.style[qualifiedName] = '256px';
+                this.button.style[qualifiedName] = ButtonSize.L;
                 break;
             case ElementSize.M:
-                this.button.style[qualifiedName] = '128px';
+                this.button.style[qualifiedName] = ButtonSize.M;
                 break;
             case ElementSize.S:
-                this.button.style[qualifiedName] = '64px';
+                this.button.style[qualifiedName] = ButtonSize.S;
                 break;
             case ElementSize.XL:
-                this.button.style[qualifiedName] = '512px';
+                this.button.style[qualifiedName] = ButtonSize.XL;
                 break;
             case ElementSize.XS:
-                this.button.style[qualifiedName] = '32px';
+                this.button.style[qualifiedName] = ButtonSize.XS;
                 break;
             default:
                 throw new NotSupportedSize(`Size: ${this.size} is not supported in component: ${Button.name}`);
