@@ -13,6 +13,7 @@ var {
     flex: 0 0 70%;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
     
     align-self: flex-start;
 }
