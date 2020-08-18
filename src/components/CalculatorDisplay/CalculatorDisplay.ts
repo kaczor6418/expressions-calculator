@@ -43,6 +43,15 @@ export class CalculatorDisplay extends KKWebComponent implements KKCalculatorDis
         this.kkTextField.value = value;
     }
 
+    public submitExpression(): void {
+        const expressionItem: SingleExpression = new SingleExpression();
+        expressionItem.expressionOperation = this.kkTextField.value;
+        expressionItem.expressionScore = Math.random() * (1000 - 1) + 1;
+        expressionItem.setScoreCallback(() => this.clickExpressionItem(expressionItem));
+        this.kkList.addElement(expressionItem);
+        this.kkTextField.clear();
+    }
+
     protected setUpElements(): void {
         const callbackProps: OnKeyDownTextFieldListenerProps = {
             eventName: 'keydown',
@@ -53,18 +62,13 @@ export class CalculatorDisplay extends KKWebComponent implements KKCalculatorDis
 
     private expressionChanged(e: KeyboardEvent): void {
         if (e.key === KeyboardKey.ENTER || e.key === KeyboardKey.EQUAL) {
-            const expressionItem: SingleExpression = new SingleExpression();
-            expressionItem.expressionOperation = this.kkTextField.value;
-            expressionItem.expressionScore = Math.random() * (1000 - 1) + 1;
-            expressionItem.setScoreCallback(() => this.clickExpressionItem(expressionItem));
-            this.kkList.addElement(expressionItem);
-            this.kkTextField.clear();
+            this.submitExpression();
             e.preventDefault();
         }
     }
 
     private clickExpressionItem(expressionItem: KKSingleExpression): void {
-        if (['+', '-'].includes(this.kkTextField.lastChar)) {
+        if (CONSTANTS.BINARY_OPERATORS.includes(this.kkTextField.lastChar)) {
             this.kkTextField.value = `${this.kkTextField.value} ${expressionItem.expressionScore}`;
         } else {
             this.kkTextField.value = `${expressionItem.expressionScore}`;

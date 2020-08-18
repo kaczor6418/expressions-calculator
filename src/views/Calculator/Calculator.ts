@@ -17,6 +17,8 @@ import { KKCalculatorDisplay } from '../../components/CalculatorDisplay/interfac
 import { CalculatorKeyboardObservedAttributes } from '../../components/CalcuatorKeayboard/interfaces/CalculatorKeyboardObservedAttributes';
 import { CalculatorKeyboardLayout } from '../../components/CalcuatorKeayboard/interfaces/CalculatorKeyboardLayout';
 import { ButtonSize } from '../../components/Button/interfaces/ButtonSize';
+import { KeyboardKey } from '../../common/Enums/KeyboardKey';
+import { Utils } from '../../common/Utils';
 
 const template: string = `
 <style>${calculatorStyles}</style>
@@ -52,7 +54,11 @@ export class Calculator extends KKWebComponent {
 
     protected setUpElements(): void {
         this.kkCalculatorKeyboard.values = this.createButtons(CONSTANTS.BINARY_VALUES);
-        this.kkCalculatorKeyboard.operators = this.createButtons(CONSTANTS.BINARY_OPERATORS);
+        this.kkCalculatorKeyboard.operators = [
+            ...this.createButtons(CONSTANTS.BINARY_OPERATORS),
+            this.removeLastSignOperatorButton(),
+            this.createSubmitOperatorButton()
+        ];
         this.footer.setCopyright({
             date: '2020',
             author: 'Krzysztof Kaczyński',
@@ -74,6 +80,28 @@ export class Calculator extends KKWebComponent {
             buttons.push(valueButton);
         }
         return buttons;
+    }
+
+    private createSubmitOperatorButton(): Button {
+        const equalsButton: Button = new Button({
+            TEXT: KeyboardKey.EQUAL,
+            AUTO_FIT: 'true',
+            MIN_WIDTH: ButtonSize.S
+        });
+        equalsButton.setButtonCallback(() => this.kkCalculatorDisplay.submitExpression());
+        return equalsButton;
+    }
+
+    private removeLastSignOperatorButton(): Button {
+        const equalsButton: Button = new Button({
+            ICON: IconId.BACKSPACE,
+            AUTO_FIT: 'true',
+            MIN_WIDTH: ButtonSize.S
+        });
+        equalsButton.setButtonCallback(() => {
+            this.kkCalculatorDisplay.displayValue = Utils.removeLastChar(this.kkCalculatorDisplay.displayValue);
+        });
+        return equalsButton;
     }
 }
 customElements.define(Calculator.TAG, Calculator);
