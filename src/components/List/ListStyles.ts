@@ -23,5 +23,4 @@ ul::-webkit-scrollbar-thumb {
 li {
  flex: 1;
 }
-
 `;

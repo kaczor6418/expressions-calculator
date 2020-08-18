@@ -10,14 +10,16 @@ import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 import { SingleExpression } from '../SingleExpression/SingleExpression';
 import { KKSingleExpression } from '../SingleExpression/interfaces/KKSingleExpression';
 import { KKCalculatorDisplay } from './interfaces/KKCalculatorDisplay';
+import { calculatorDisplayStyles } from './CalculatorDisplayStyles';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)',
-    maxHeight: '40%',
+    height: '40%',
     overflowY: 'auto'
 };
 
 const template: string = `
+<style>${calculatorDisplayStyles}</style>
 <${List.TAG} custom-styles=${JSON.stringify(listCustomStyles)}></${List.TAG}>
 <${TextField.TAG} placeholder="Type expression..." size=${ElementSize.L}></${TextField.TAG}>
 `;

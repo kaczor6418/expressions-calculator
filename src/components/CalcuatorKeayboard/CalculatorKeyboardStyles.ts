@@ -5,6 +5,7 @@ div {
     display: flex;
     justify-content: stretch;
     padding: var(--spacing-l);
+    height: calc(60% - var(--font-size-l) - 2 * var(--spacing-m) - 2px);
 }
 
 kk-list {
@@ -12,35 +13,35 @@ kk-list {
 }
 
 .horizontal #values {
-    padding-right: var(--spacing-m);
+    padding-right: var(--spacing-s);
 }
 
 .horizontal #operators {
-    padding-left: var(--spacing-m);
+    padding-left: var(--spacing-s);
 }
 
 .horizontal-reversed #values {
-    padding-left: var(--spacing-m);
+    padding-left: var(--spacing-s);
 }
 
 .horizontal-reversed #operators {
-    padding-right: var(--spacing-m);
+    padding-right: var(--spacing-s);
 }
 
 .vertical #values {
-    padding-bottom: var(--spacing-m);
+    padding-bottom: var(--spacing-s);
 }
 
 .vertical #operators {
-    padding-top: var(--spacing-m);
+    padding-top: var(--spacing-s);
 }
 
 .vertical-reversed #values {
-    padding-top: var(--spacing-m);
+    padding-top: var(--spacing-s);
 }
 
 .vertical-reversed #operators {
-    padding-bottom: var(--spacing-m);
+    padding-bottom: var(--spacing-s);
 }
     
 .vertical {

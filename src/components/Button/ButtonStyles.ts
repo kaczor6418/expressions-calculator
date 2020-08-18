@@ -12,7 +12,8 @@ button {
     padding: var(--spacing-m);
     background-color: var(--color-accent-2-inactive);
     border: 2px dashed var(--color-accent-1-inactive);
-    
+    box-shadow: var(--shadow-around-level-2);
+
     transition: all var(--default-duration) var(--ease-in-out-quint);
     transition-property: background-color, border-color, border-style;
     will-change: background-color, border-color, border-style;
@@ -27,8 +28,8 @@ button:hover:enabled {
 button:disabled {
     cursor: not-allowed;
 }
-    
+
 .shadow-around {
-    box-shadow: var(--shadow-around);
+    box-shadow: var(--shadow-around-level-2);
 }
 `;

@@ -16,6 +16,7 @@ import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentP
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     width: '100%',
+    height: '100%',
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'space-around'

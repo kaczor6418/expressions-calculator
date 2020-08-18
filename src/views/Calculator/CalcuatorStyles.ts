@@ -1,8 +1,6 @@
 //language=CSS
 export const calculatorStyles: string = `
 main {
-    height: 100vh;
-    width: 100vw;
     display: grid;
     grid-template-rows: [app-header]12fr [app-body]70fr [app-footer]18fr;
 }
@@ -18,13 +16,5 @@ kk-app-footer {
     background: var(--color-primary-dark);
     grid-row: app-footer / app-footer;
     box-shadow: var(--shadow-top);
-}
-
-kk-calculator-display {
-    max-height: 40%;
-}
-    
-kk-calculator-kyboard {
-    max-height: 60%;
 }
 `;

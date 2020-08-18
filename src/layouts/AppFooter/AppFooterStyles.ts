@@ -8,6 +8,10 @@ footer {
     align-items: center;
 }
 
+p {
+    text-align: center;
+}
+
 a {
     text-decoration: none;
     font-weight: var(--font-weight-bold);
