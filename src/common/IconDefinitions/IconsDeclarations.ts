@@ -2,4 +2,5 @@
 // @ts-nocheck
 import logo from '../../assets/icons/logo.svg';
 import github from '../../assets/icons/github.svg';
-export { logo, github };
+import backspace from '../../assets/icons/backspace.svg';
+export { logo, github, backspace };

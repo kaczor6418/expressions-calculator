@@ -1,4 +1,4 @@
-import { logo, github } from './IconsDeclarations';
+import { backspace, github, logo } from './IconsDeclarations';
 import { Utils } from '../Utils';
 import { IconId } from '../Enums/IconId';
 import { HTMLStringConverter } from '../../converters/HTMLStringConverter';
@@ -8,6 +8,7 @@ export namespace IconDefinitions {
     const iconIds: Map<IconId, string> = new Map<IconId, string>();
     iconIds.set(IconId.LOGO, logo);
     iconIds.set(IconId.GITHUB, github);
+    iconIds.set(IconId.BACKSPACE, backspace);
 
     export function getIcon(iconId: IconId): SVGElement {
         const icon: string | undefined = iconIds.get(iconId);
