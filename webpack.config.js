@@ -7,13 +7,11 @@ module.exports = {
     devtool: 'eval-source-map',
     entry: './src/index.ts',
     output: {
-        publicPath: '',
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
     experiments: {
-        asyncWebAssembly: true,
-        importAsync: true
+        asyncWebAssembly: true
     },
     module: {
         rules: [
