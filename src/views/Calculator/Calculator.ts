@@ -19,6 +19,7 @@ import { CalculatorKeyboardLayout } from '../../components/CalcuatorKeayboard/in
 import { ButtonSize } from '../../components/Button/interfaces/ButtonSize';
 import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 import { Utils } from '../../common/Utils';
+import { LexicalAnalyzer } from '../../../calculator-engine/pkg/calculator_engine';
 
 const template: string = `
 <style>${calculatorStyles}</style>
@@ -50,6 +51,10 @@ export class Calculator extends KKWebComponent {
     constructor() {
         super(template);
         this.setUpElements();
+        const lexicalAnalyzer: LexicalAnalyzer = LexicalAnalyzer.new();
+        console.log(lexicalAnalyzer.expression());
+        lexicalAnalyzer.change_expression();
+        console.log(lexicalAnalyzer.expression());
     }
 
     protected setUpElements(): void {

@@ -5,13 +5,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
-    entry: './src/index.ts',
+    entry: './src/bootstrap.ts',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
-    },
-    experiments: {
-        asyncWebAssembly: true
     },
     module: {
         rules: [
@@ -55,4 +52,7 @@ module.exports = {
             chunkFilename: '[id].css',
         }),
     ],
+    experiments: {
+        syncWebAssembly: true
+    }
 };

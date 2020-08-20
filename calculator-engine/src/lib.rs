@@ -24,14 +24,3 @@ impl LexicalAnalyzer {
         self.expression = 'b';
     }
 }
-
-
-#[wasm_bindgen]
-pub fn return_char() -> char {
-        return 'a';
-    }
-
-#[wasm_bindgen]
-pub fn return_u8() -> u8 {
-    return 1;
-}
