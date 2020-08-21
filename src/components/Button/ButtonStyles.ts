@@ -1,6 +1,7 @@
 //language=CSS
 export const buttonStyles: string = `
 button {
+    position: relative;
     outline: none;
     cursor: pointer;
     text-align: center;
@@ -32,5 +33,24 @@ button:disabled {
 
 .shadow-around {
     box-shadow: var(--shadow-around-level-2);
+}
+
+button > span {
+    position: absolute;
+    background-color: var(--color-accent-1);
+    border-radius: 50%;
+    width: 1px;
+    height: 1px;
+    animation: ripple 0.6s linear infinite;
+}
+    
+@keyframes ripple {
+    0% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1000);
+    }
 }
 `;

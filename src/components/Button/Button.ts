@@ -26,6 +26,7 @@ export class Button extends KKWebComponent implements KKButton {
     public static observedAttributes: ButtonObservedAttributes[] = Object.values(ButtonObservedAttributes);
 
     private static SHADOW_AROUND_CLASS: string = 'shadow-around';
+    private static RIPPLE_ANIMATION_DURATION = 600;
 
     private readonly button: HTMLButtonElement = <HTMLButtonElement>this.shadowRoot.querySelector('button');
 
@@ -83,7 +84,16 @@ export class Button extends KKWebComponent implements KKButton {
     }
 
     public setButtonCallback(callback: MouseEventCallback): void {
-        this.button.addEventListener('click', callback);
+        this.button.addEventListener('click', (e) => {
+            const ripple: HTMLSpanElement = document.createElement('span');
+            ripple.style.left = `${e.offsetX}px`;
+            ripple.style.top = `${e.offsetY}px`;
+            this.button.appendChild(ripple);
+            window.setTimeout(() => {
+                ripple.remove();
+            }, Button.RIPPLE_ANIMATION_DURATION);
+            callback(e);
+        });
     }
 
     private addIcon(iconId: IconId): void {
