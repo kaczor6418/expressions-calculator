@@ -41,7 +41,8 @@ button > span {
     border-radius: 50%;
     width: 1px;
     height: 1px;
-    animation: ripple 0.6s linear infinite;
+    pointer-events: none;
+    animation: ripple 0.6s var(--ease-in-out-quint);
 }
     
 @keyframes ripple {
