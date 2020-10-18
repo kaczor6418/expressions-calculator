@@ -14,7 +14,7 @@ import { calculatorDisplayStyles } from './CalculatorDisplayStyles';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)',
-    height: '40%',
+    height: '36%',
     overflowY: 'auto'
 };
 

@@ -67,7 +67,7 @@ export class Calculator extends KKWebComponent {
         this.footer.setCopyright({
             date: '2020',
             author: 'Krzysztof Kaczyński',
-            termsReferenceUrl: 'https://www.google.com'
+            termsReferenceUrl: 'https://github.com/kaczor6418/binary-calculator/blob/master/LICENSE'
         });
     }
 

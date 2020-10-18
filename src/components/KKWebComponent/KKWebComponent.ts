@@ -13,7 +13,6 @@ export abstract class KKWebComponent<T extends string = string> extends HTMLElem
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = template;
         this.props = props;
-        Utils.injectGlobalStyles(this.shadowRoot);
     }
 
     protected initialize(): void {

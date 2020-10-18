@@ -3,6 +3,8 @@ export const calculatorStyles: string = `
 main {
     display: grid;
     grid-template-rows: [app-header]12fr [app-body]70fr [app-footer]18fr;
+    max-width: 100vw;
+    max-height: 100vh;
 }
 kk-app-header {
     background: var(--color-primary-dark);
