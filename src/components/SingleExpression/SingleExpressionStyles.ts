@@ -6,7 +6,6 @@ p {
     
     display: flex;
     justify-content: space-between;
-    gap: 50px;
 }
 
 var {
