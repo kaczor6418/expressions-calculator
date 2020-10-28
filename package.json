@@ -6,8 +6,7 @@
   "scripts": {
     "serve": "webpack serve",
     "build": "webpack",
-    "lint": "eslint . --ext .ts --quiet --fix",
-    "tsc": "tsc"
+    "lint-and-fix": "eslint . --ext .ts --quiet --fix"
   },
   "repository": {
     "type": "git",
@@ -29,6 +28,8 @@
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^1.0.0",
     "prettier": "^2.1.2",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.4",
     "svg-inline-loader": "^0.8.2",
     "ts-loader": "^8.0.5",
     "typescript": "^4.0.3",

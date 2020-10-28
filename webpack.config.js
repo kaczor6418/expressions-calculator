@@ -22,17 +22,14 @@ module.exports = {
                 loader: 'svg-inline-loader'
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '',
-                        },
-                    },
+                    process.env.NODE_ENV !== 'production'
+                        ? 'style-loader'
+                        : MiniCssExtractPlugin.loader,
                     'css-loader',
+                    'sass-loader',
                 ],
-                include: [path.resolve(__dirname, 'src')],
             },
         ],
     },
