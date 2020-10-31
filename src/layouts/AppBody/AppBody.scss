@@ -1,5 +1,6 @@
 main {
   height: calc(100% - 2 * var(--spacing-xl));
+  max-width: 100%;
   margin: var(--spacing-xl);
   box-shadow: var(--shadow-around-level-1);
 }

@@ -13,34 +13,31 @@ button {
   background-color: var(--color-accent-2-inactive);
   border: 2px dashed var(--color-accent-1-inactive);
   box-shadow: var(--shadow-around-level-2);
-
   transition: all var(--default-duration) var(--ease-in-out-quint);
   transition-property: background-color, border-color, border-style;
   will-change: background-color, border-color, border-style;
-}
 
-button:hover:enabled {
-  background-color: var(--color-accent-2);
-  border-color: var(--color-accent-1);
-  border-style: solid;
-}
+  &:hover {
+    &:enabled {
+      background-color: var(--color-accent-2);
+      border-color: var(--color-accent-1);
+      border-style: solid;
+    }
+  }
 
-button:disabled {
-  cursor: not-allowed;
-}
+  &:disabled {
+    cursor: not-allowed;
+  }
 
-.shadow-around {
-  box-shadow: var(--shadow-around-level-2);
-}
-
-button > span {
-  position: absolute;
-  background-color: var(--color-accent-1);
-  border-radius: 50%;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-  animation: ripple 0.6s var(--ease-in-out-quint);
+  & > span {
+    position: absolute;
+    background-color: var(--color-accent-1);
+    border-radius: 50%;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+    animation: ripple 0.6s var(--ease-in-out-quint);
+  }
 }
 
 @keyframes ripple {

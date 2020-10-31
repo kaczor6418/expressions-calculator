@@ -3,12 +3,10 @@
 :root {
     background: var(--color-primary);
     color: var(--color-text);
-    font-family: 'Roboto Mono', monospace;
     font-size: var(--font-size-base);
     line-height: var(--line-height);
     font-weight: var(--font-weight-normal);
     scroll-behavior: smooth;
-    text-rendering: optimizeSpeed;
 }
 
 *,

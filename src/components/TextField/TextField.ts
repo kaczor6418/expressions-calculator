@@ -25,11 +25,11 @@ export class TextField extends KKWebComponent implements KKTextField {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-text-field`;
     public static observedAttributes: TextFieldObservedAttributes[] = Object.values(TextFieldObservedAttributes);
 
-    private static INPUT_XS_CLASS: string = 'input-xs';
-    private static INPUT_S_CLASS: string = 'input-s';
-    private static INPUT_M_CLASS: string = 'input-m';
-    private static INPUT_L_CLASS: string = 'input-l';
-    private static INPUT_XL_CLASS: string = 'input-xl';
+    private static INPUT_XS_CLASS: string = 'size-xs';
+    private static INPUT_S_CLASS: string = 'size-s';
+    private static INPUT_M_CLASS: string = 'size-m';
+    private static INPUT_L_CLASS: string = 'size-l';
+    private static INPUT_XL_CLASS: string = 'size-xl';
 
     private readonly textFieldContainer: HTMLDivElement = <HTMLDivElement>this.shadowRoot.querySelector('div');
     private readonly input: HTMLInputElement = <HTMLInputElement>this.textFieldContainer.querySelector('input');
