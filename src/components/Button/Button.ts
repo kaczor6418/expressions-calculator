@@ -1,3 +1,4 @@
+import * as styles from './Button.scss';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { KKButton } from './interfaces/KKButton';
@@ -7,7 +8,6 @@ import { NotSupportedObservedAttribute } from '../../errors/NotSupportedObserved
 import { IconId } from '../../common/Enums/IconId';
 import { Icon } from '../Icon/Icon';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
-import { buttonStyles } from './ButtonStyles';
 import { ElementSize } from '../../common/Enums/ElementSize';
 import { NotSupportedSize } from '../../errors/NotSupportedSize';
 import { Shape } from '../../common/Enums/Shape';
@@ -15,7 +15,6 @@ import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentP
 import { ButtonSize } from './interfaces/ButtonSize';
 
 const template: string = `
-<style>${buttonStyles}</style>
 <button type="button">
   <slot name="icon"></slot>
 </button>
@@ -34,7 +33,7 @@ export class Button extends KKWebComponent implements KKButton {
     private size: ElementSize = ElementSize.M;
 
     constructor(props?: KKWebComponentProps<keyof typeof ButtonObservedAttributes>) {
-        super(template, props);
+        super(template, styles, props);
         this.setButtonSize('width');
     }
 

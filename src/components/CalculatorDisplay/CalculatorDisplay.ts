@@ -1,3 +1,4 @@
+import * as styles from './CalculatorDisplay.scss';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { KKTextField } from '../TextField/interface/KKTextField';
@@ -10,7 +11,6 @@ import { KeyboardKey } from '../../common/Enums/KeyboardKey';
 import { SingleExpression } from '../SingleExpression/SingleExpression';
 import { KKSingleExpression } from '../SingleExpression/interfaces/KKSingleExpression';
 import { KKCalculatorDisplay } from './interfaces/KKCalculatorDisplay';
-import { calculatorDisplayStyles } from './CalculatorDisplayStyles';
 
 const listCustomStyles: Partial<CSSStyleDeclaration> = {
     background: 'var(--color-accent-2-inactive)',
@@ -19,7 +19,6 @@ const listCustomStyles: Partial<CSSStyleDeclaration> = {
 };
 
 const template: string = `
-<style>${calculatorDisplayStyles}</style>
 <${List.TAG} custom-styles=${JSON.stringify(listCustomStyles)}></${List.TAG}>
 <${TextField.TAG} placeholder="Type expression..." size=${ElementSize.L}></${TextField.TAG}>
 `;
@@ -31,7 +30,7 @@ export class CalculatorDisplay extends KKWebComponent implements KKCalculatorDis
     private readonly kkList: KKList<SingleExpression> = <KKList<SingleExpression>>(<unknown>this.shadowRoot.querySelector(List.TAG));
 
     constructor() {
-        super(template);
+        super(template, styles);
         this.setUpElements();
     }
 

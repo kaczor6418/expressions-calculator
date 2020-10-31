@@ -8,11 +8,23 @@ export abstract class KKWebComponent<T extends string = string> extends HTMLElem
 
     private readonly props: KKWebComponentProps<T> | undefined = undefined;
 
-    protected constructor(template: string, props?: KKWebComponentProps<T>) {
+    protected constructor(template: string, styles?: unknown, props?: KKWebComponentProps<T>) {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = template;
+        this.injectStyles(styles);
         this.props = props;
+    }
+
+    private injectStyles(styles: unknown): void {
+        if (Utils.isNullOrUndefined(styles)) {
+            return void 0;
+        }
+        const styleWrapper: HTMLStyleElement = document.createElement('style');
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        styleWrapper.innerHTML = styles;
+        this.shadowRoot.appendChild(styleWrapper);
     }
 
     protected initialize(): void {

@@ -1,3 +1,4 @@
+import * as styles from './Icon.scss';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { IconId } from '../../common/Enums/IconId';
@@ -6,11 +7,9 @@ import { IconSize } from './interfaces/IconSize';
 import { IconObservedAttributes } from './interfaces/IconObservedAttributes';
 import { NotSupportedObservedAttribute } from '../../errors/NotSupportedObservedAttribute';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
-import { iconStyles } from './IconStyles';
 import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentProps';
 
 const template: string = `
-<style>${iconStyles}</style>
 <a></a>
 `;
 
@@ -25,7 +24,7 @@ export class Icon extends KKWebComponent {
     private icon!: SVGElement;
 
     constructor(props?: KKWebComponentProps<keyof typeof IconObservedAttributes>) {
-        super(template, props);
+        super(template, styles, props);
     }
 
     public attributeChangedCallback(name: IconObservedAttributes, oldValue: string, newValue: string): void {

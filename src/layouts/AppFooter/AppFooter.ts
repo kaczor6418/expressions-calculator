@@ -1,12 +1,11 @@
+import * as styles from './AppFooter.scss';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
-import { appFooterStyles } from './AppFooterStyles';
 import { CopyrightProps } from './interfaces/CopyrightProps';
 import { HTMLStringConverter } from '../../converters/HTMLStringConverter';
 import { KKAppFooter } from './interfaces/KKAppFooter';
 
 const template: string = `
-<style>${appFooterStyles}</style>
 <footer>
   <slot name="prepend"></slot>
   <slot name="center"></slot>
@@ -20,7 +19,7 @@ export class AppFooter extends KKWebComponent implements KKAppFooter {
     private readonly footer: HTMLElement = <HTMLElement>this.shadowRoot.querySelector('footer');
 
     constructor() {
-        super(template);
+        super(template, styles);
     }
 
     public setCopyright({ date, author, termsReferenceUrl }: CopyrightProps): void {

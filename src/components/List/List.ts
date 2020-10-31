@@ -1,5 +1,5 @@
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
-import { listStyles } from './ListStyles';
+import * as styles from './List.scss';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { ListObservedAttributes } from './interfaces/ListObservedAttributes';
 import { NotSupportedObservedAttribute } from '../../errors/NotSupportedObservedAttribute';
@@ -8,7 +8,6 @@ import { KKList } from './interfaces/KKList';
 import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentProps';
 
 const template: string = `
-<style>${listStyles}</style>
 <ul></ul>
 `;
 
@@ -22,7 +21,7 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
     private listElements: T[] = [];
 
     constructor(props?: KKWebComponentProps<keyof typeof ListObservedAttributes>) {
-        super(template, props);
+        super(template, styles, props);
     }
 
     get elements(): T[] {
@@ -68,4 +67,5 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
         Object.assign(this.listWrapper.style, styles);
     }
 }
+
 customElements.define(List.TAG, List);

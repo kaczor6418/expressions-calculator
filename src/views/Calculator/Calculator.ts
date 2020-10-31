@@ -1,6 +1,6 @@
+import * as styles from './Calculator.scss';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
-import { calculatorStyles } from './CalcuatorStyles';
 import { IconId } from '../../common/Enums/IconId';
 import { IconSize } from '../../components/Icon/interfaces/IconSize';
 import { KKAppFooter } from '../../layouts/AppFooter/interfaces/KKAppFooter';
@@ -22,7 +22,6 @@ import { Utils } from '../../common/Utils';
 import { LexicalAnalyzer } from '../../../calculator-engine/pkg/calculator_engine';
 
 const template: string = `
-<style>${calculatorStyles}</style>
 <main>
   <${AppHeader.TAG}>
     <${Icon.TAG} slot="prepend" icon-id="${IconId.LOGO}" icon-size="${IconSize.L}"></${Icon.TAG}>
@@ -49,7 +48,7 @@ export class Calculator extends KKWebComponent {
     );
 
     constructor() {
-        super(template);
+        super(template, styles);
         this.setUpElements();
         const lexicalAnalyzer: LexicalAnalyzer = LexicalAnalyzer.new();
         console.log(lexicalAnalyzer.expression());

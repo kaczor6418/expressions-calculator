@@ -1,3 +1,4 @@
+import * as styles from './CalculatorKeyboard.scss';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKCalculatorKeyboard } from './interfaces/KKCalculatorKeyboard';
@@ -9,7 +10,6 @@ import { TextField } from '../TextField/TextField';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
 import { KKList } from '../List/interfaces/KKList';
 import { Button } from '../Button/Button';
-import { calculatorKeyboardStyles } from './CalculatorKeyboardStyles';
 import { ListObservedAttributes } from '../List/interfaces/ListObservedAttributes';
 import { Divider } from '../Divider/Divider';
 import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentProps';
@@ -23,7 +23,6 @@ const listCustomStyles: Partial<CSSStyleDeclaration> = {
 };
 
 const template: string = `
-<style>${calculatorKeyboardStyles}</style>
 <div>
   <${List.TAG} id="values" ${ListObservedAttributes.CUSTOM_STYLES}=${JSON.stringify(listCustomStyles)} ${
     ListObservedAttributes.ITEM_GAP
@@ -44,7 +43,7 @@ export class CalculatorKeyboard extends KKWebComponent implements KKCalculatorKe
     private readonly kkOperatorsList: KKList<Button> = <KKList<Button>>(<unknown>this.shadowRoot.querySelector('#operators'));
 
     constructor(props?: KKWebComponentProps<keyof typeof CalculatorKeyboardObservedAttributes>) {
-        super(template, props);
+        super(template, styles, props);
     }
 
     set values(values: Button[]) {

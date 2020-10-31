@@ -1,9 +1,8 @@
+import * as styles from './AppHeader.scss';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../../components/KKWebComponent/KKWebComponent';
-import { appHeaderStyles } from './AppHeaderStyles';
 
 const template: string = `
-<style>${appHeaderStyles}</style>
 <header>
   <slot name="prepend"></slot>
   <slot name="center"></slot>
@@ -15,7 +14,7 @@ export class AppHeader extends KKWebComponent {
     public static TAG: string = `${CONSTANTS.TAG_PREFIX}-app-header`;
 
     constructor() {
-        super(template);
+        super(template, styles);
     }
 }
 customElements.define(AppHeader.TAG, AppHeader);

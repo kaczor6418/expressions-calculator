@@ -1,8 +1,8 @@
+import * as styles from './TextField.scss';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { TextFieldObservedAttributes } from './interface/TextFieldObservedAttributes';
 import { NotSupportedObservedAttribute } from '../../errors/NotSupportedObservedAttribute';
-import { textFieldsStyles } from './TextFieldsStyles';
 import { EnumValueEnumConverter } from '../../converters/EnumValueEnumConverter';
 import { ElementSize } from '../../common/Enums/ElementSize';
 import { NotSupportedSize } from '../../errors/NotSupportedSize';
@@ -16,7 +16,6 @@ import { KKTextField } from './interface/KKTextField';
 import { KKWebComponentProps } from '../KKWebComponent/interface/KKWebComponentProps';
 
 const template: string = `
-<style>${textFieldsStyles}</style>
 <div>
   <input type="text">
 </div>
@@ -36,7 +35,7 @@ export class TextField extends KKWebComponent implements KKTextField {
     private readonly input: HTMLInputElement = <HTMLInputElement>this.textFieldContainer.querySelector('input');
 
     constructor(props?: KKWebComponentProps<keyof typeof TextFieldObservedAttributes>) {
-        super(template, props);
+        super(template, styles, props);
     }
 
     get lastChar(): string {

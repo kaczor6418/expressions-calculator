@@ -1,13 +1,12 @@
+import * as styles from './SingleExpression.scss';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { CONSTANTS } from '../../common/CONSTANTS';
 import { KKSingleExpression } from './interfaces/KKSingleExpression';
-import { singleExpressionStyles } from './SingleExpressionStyles';
 import { Utils } from '../../common/Utils';
 import { ValueUnset } from '../../errors/ValueUnset';
 import { MouseEventCallback } from '../../common/Types';
 
 const template: string = `
-<style>${singleExpressionStyles}</style>
 <p>
     <var></var> = <mark></mark>
 </p>
@@ -22,7 +21,7 @@ export class SingleExpression extends KKWebComponent implements KKSingleExpressi
     private value: number | null = null;
 
     constructor() {
-        super(template);
+        super(template, styles);
     }
 
     set expressionOperation(value: string) {
