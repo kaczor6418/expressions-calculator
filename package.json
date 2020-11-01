@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "serve": "webpack serve",
     "build": "webpack",
-    "lint-and-fix-ts": "eslint . --ext .ts --quiet --fix",
-    "lint-and-fix-scss": "stylelint **/*.scss --fix"
+    "postinstall": "husky install",
+    "lint-ts": "eslint . --ext .ts --quiet",
+    "lint-scss": "stylelint **/*.scss",
+    "lint-and-fix": "eslint . --ext .ts --quiet --fix && stylelint **/*.scss --fix"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,8 @@
     "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-prettier": "^3.1.4",
     "html-webpack-plugin": "^4.5.0",
+    "husky": "^5.0.0-beta.0",
+    "lint-staged": "^10.5.1",
     "mini-css-extract-plugin": "^1.0.0",
     "prettier": "^2.1.2",
     "sass": "^1.27.0",
