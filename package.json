@@ -10,7 +10,7 @@
     "postinstall": "husky install",
     "lint-ts": "eslint . --ext .ts --quiet",
     "lint-scss": "stylelint **/*.scss",
-    "validate-and-fix-staged": "eslint . --ext .ts --quiet --fix && stylelint **/*.scss --fix && git add && git commit --amend --no-edit"
+    "validate-and-fix-staged": "eslint . --ext .ts --quiet --fix && stylelint **/*.scss --fix && git add . && git commit --amend --no-edit"
   },
   "repository": {
     "type": "git",
