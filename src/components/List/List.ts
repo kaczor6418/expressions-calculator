@@ -63,8 +63,8 @@ export class List<T extends HTMLElement> extends KKWebComponent implements KKLis
         this.listWrapper.appendChild(li);
     }
 
-    private setListCustomStyles(styles: Partial<CSSStyleDeclaration>): void {
-        Object.assign(this.listWrapper.style, styles);
+    private setListCustomStyles(customStyles: Partial<CSSStyleDeclaration>): void {
+        Object.assign(this.listWrapper.style, customStyles);
     }
 }
 

@@ -10,11 +10,15 @@
     "postinstall": "husky install",
     "lint-ts": "eslint . --ext .ts --quiet",
     "lint-scss": "stylelint **/*.scss",
-    "lint-and-fix": "eslint . --ext .ts --quiet --fix && stylelint **/*.scss --fix"
+    "validate-and-fix-staged": "lint-staged"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kaczor6418/binary-calculator.git"
+  },
+  "lint-staged": {
+    "*.ts": ["eslint . --ext .ts --quiet --fix"],
+    "*scss": ["stylelint **/*.scss --fix"]
   },
   "keywords": [],
   "author": "",
