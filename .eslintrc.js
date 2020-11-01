@@ -15,6 +15,10 @@ module.exports = {
         'plugin:prettier/recommended' // Make sure this is always the last configuration in the extends array.
     ],
     rules: {
+        'no-eval': 2,
+        '@typescript-eslint/no-shadow': 2,
+        //ignored
+        'no-shadow': 0,
         '@typescript-eslint/no-namespace': 0,
         '@typescript-eslint/no-inferrable-types': 0,
         '@typescript-eslint/restrict-template-expressions': 0

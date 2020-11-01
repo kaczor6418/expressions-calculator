@@ -6,8 +6,9 @@ main {
 
   kk-app-header {
     background: var(--color-primary-dark);
+
     grid-row: app-header / app-header;
-    box-shadow: var(--shadow-bottom);
+    box-shadow: var(--shadow-top);
   }
 
   kk-app-body {

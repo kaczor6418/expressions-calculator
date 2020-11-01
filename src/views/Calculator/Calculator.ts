@@ -50,10 +50,8 @@ export class Calculator extends KKWebComponent {
     constructor() {
         super(template, styles);
         this.setUpElements();
-        const lexicalAnalyzer: LexicalAnalyzer = LexicalAnalyzer.new();
-        console.log(lexicalAnalyzer.expression());
-        lexicalAnalyzer.change_expression();
-        console.log(lexicalAnalyzer.expression());
+        var lexicalAnalyzer: LexicalAnalyzer = LexicalAnalyzer.new();
+                   lexicalAnalyzer.change_expression();
     }
 
     protected setUpElements(): void {
