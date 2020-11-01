@@ -1,5 +1,7 @@
 # expressions-calculator
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4c724d64f8614e208ae8c326e194c67f)](https://app.codacy.com/gh/kaczor6418/expressions-calculator?utm_source=github.com&utm_medium=referral&utm_content=kaczor6418/expressions-calculator&utm_campaign=Badge_Grade)
+
 ## Description
 
 Expressions calculator can take binary or regular mathematical expression then do lexical, syntax and semantic analysis of provided expression. If the expression doesn't contain any errors then calculator-enige will compile the expression and return result of the expression.
