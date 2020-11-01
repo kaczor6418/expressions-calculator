@@ -17,16 +17,16 @@ button {
   transition-property: background-color, border-color, border-style;
   will-change: background-color, border-color, border-style;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &:hover {
     &:enabled {
       background-color: var(--color-accent-2);
       border-color: var(--color-accent-1);
       border-style: solid;
     }
-  }
-
-  &:disabled {
-    cursor: not-allowed;
   }
 
   & > span {
@@ -44,6 +44,7 @@ button {
   0% {
     opacity: 0.7;
   }
+
   100% {
     opacity: 0;
     transform: scale(1000);

@@ -9,13 +9,14 @@ main {
     grid-row: app-header / app-header;
     box-shadow: var(--shadow-bottom);
   }
+
   kk-app-body {
     grid-row: app-body / app-body;
   }
+
   kk-app-footer {
     background: var(--color-primary-dark);
     grid-row: app-footer / app-footer;
     box-shadow: var(--shadow-top);
   }
-
 }

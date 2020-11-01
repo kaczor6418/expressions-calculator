@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "webpack serve",
     "build": "webpack",
-    "lint-and-fix": "eslint . --ext .ts --quiet --fix"
+    "lint-and-fix-ts": "eslint . --ext .ts --quiet --fix",
+    "lint-and-fix-scss": "stylelint **/*.scss --fix"
   },
   "repository": {
     "type": "git",

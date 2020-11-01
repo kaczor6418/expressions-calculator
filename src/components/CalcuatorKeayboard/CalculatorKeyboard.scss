@@ -12,16 +12,20 @@ div {
   &.horizontal {
     &-reversed {
       flex-direction: row-reverse;
+
       &#values {
         padding-left: var(--spacing-s);
       }
+
       &#operators {
         padding-right: var(--spacing-s);
       }
     }
+
     &#values {
       padding-right: var(--spacing-s);
     }
+
     &#operators {
       padding-left: var(--spacing-s);
     }
@@ -29,18 +33,23 @@ div {
 
   &.vertical {
     flex-direction: column;
+
     &-reversed {
       flex-direction: column-reverse;
+
       &#values {
         padding-top: var(--spacing-s);
       }
+
       &#operators {
         padding-bottom: var(--spacing-s);
       }
     }
+
     &#values {
       padding-bottom: var(--spacing-s);
     }
+
     &#operators {
       padding-top: var(--spacing-s);
     }

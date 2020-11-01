@@ -1,8 +1,8 @@
 :root {
-    --default-duration: 250ms;
-    --fast-duration: calc(var(--default-duration) * 0.5);
-    --long-duration: calc(var(--default-duration) * 1.5);
-    --default-delay: var(--default-duration);
-    --fast-delay: calc(var(--default-delay) * 0.5);
-    --long-delay: calc(var(--default-delay) * 0.5)
+  --default-duration: 250ms;
+  --fast-duration: calc(var(--default-duration) * 0.5);
+  --long-duration: calc(var(--default-duration) * 1.5);
+  --default-delay: var(--default-duration);
+  --fast-delay: calc(var(--default-delay) * 0.5);
+  --long-delay: calc(var(--default-delay) * 0.5);
 }

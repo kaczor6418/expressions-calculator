@@ -1,31 +1,31 @@
-@font-face{
-    font-family: 'JetBrains Mono';
-    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.eot') format('embedded-opentype'),
+@font-face {
+  font-family: 'JetBrains Mono';
+  src:
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.eot') format('embedded-opentype'),
     url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2'),
     url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff') format('woff'),
     url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-    -webkit-font-feature-settings: "liga" on, "calt" on;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeSpeed;
-    font-family: 'JetBrains Mono', monospace;
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 :root {
-    --font-size-base: 16px;
-    --font-size-xs: calc(var(--font-size-base) * 0.5);
-    --font-size-s: calc(var(--font-size-base) * 0.7);
-    --font-size-m: var(--font-size-base);
-    --font-size-l: calc( var(--font-size-base) * 1.5);
-    --font-size-xl: calc( var(--font-size-base) * 2);
-
-    --font-weight-bold: bold;
-    --font-weight-light: 300;
-    --font-weight-normal: 400;
-    --font-weight-semibold: 500;
-    --line-height: 1.45;
+  --font-size-base: 16px;
+  --font-size-xs: calc(var(--font-size-base) * 0.5);
+  --font-size-s: calc(var(--font-size-base) * 0.7);
+  --font-size-m: var(--font-size-base);
+  --font-size-l: calc(var(--font-size-base) * 1.5);
+  --font-size-xl: calc(var(--font-size-base) * 2);
+  --font-weight-bold: bold;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 500;
+  --line-height: 1.45;
 }
