@@ -1,0 +1,15 @@
+#!/bin/sh
+all_files_to_commit=$(git diff --name-only --cached)
+ends_with_ts=".*\.ts$"
+ends_with_scss=".*\.scss$"
+for file in $all_files_to_commit
+do
+  if echo "$file" | grep "$ends_with_ts"; then
+    ./node_modules/.bin/eslint "$file" --quiet
+  fi
+  if echo "$file" | grep "$ends_with_scss"; then
+    ./node_modules/.bin/stylelint "$file"
+  fi
+done
+echo "Has erros"
+exit 1
