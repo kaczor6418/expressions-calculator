@@ -2,14 +2,19 @@
 all_files_to_commit=$(git diff --name-only --cached)
 ends_with_ts=".*\.ts$"
 ends_with_scss=".*\.scss$"
+all_ts_files=""
+all_scss_files=""
 for file in $all_files_to_commit
 do
   if echo "$file" | grep "$ends_with_ts"; then
-    ./node_modules/.bin/eslint "$file" --quiet
+    all_ts_files="${all_ts_files}${file} "
   fi
   if echo "$file" | grep "$ends_with_scss"; then
-    ./node_modules/.bin/stylelint "$file"
+    all_scss_files="${all_scss_files}${file} "
   fi
 done
-echo "Has erros"
+all_ts_files=$(echo "$all_ts_files" | tr -d '\n')
+echo "$all_ts_files"
+./node_modules/.bin/eslint src/components/List/List.ts src/views/Calculator/Calculator.ts --quiet
+./node_modules/.bin/eslint "$all_ts_files" --quiet
 exit 1
