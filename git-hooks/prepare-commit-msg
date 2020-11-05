@@ -13,8 +13,12 @@ do
     all_scss_files="${all_scss_files}${file} "
   fi
 done
-all_ts_files=$(echo "$all_ts_files" | tr -d '\n')
-echo "$all_ts_files"
-./node_modules/.bin/eslint src/components/List/List.ts src/views/Calculator/Calculator.ts --quiet
-./node_modules/.bin/eslint "$all_ts_files" --quiet
-exit 1
+./node_modules/.bin/eslint $all_ts_files --quiet --fix && ./node_modules/.bin/stylelint $all_scss_files --stdin --quiet --fix
+if [ $? -ne 0 ]
+then
+  echo Linter errors has occured
+  exit 1
+else
+  echo Eslint and Stylelint did not find any errors
+  exit 0
+fi
