@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "webpack serve",
     "build": "webpack",
-    "postinstall": "ln -s -f ../../git-hooks/pre-push .git/hooks/pre-push",
+    "postinstall": "ln -s -f ../../git-hooks/pre-commit .git/hooks/pre-commit",
     "lint-ts": "eslint . --ext .ts --quiet",
     "lint-scss": "stylelint **/*.scss",
     "lint-and-fix": "eslint . --ext .ts --quiet --fix && stylelint **/*.scss --fix"
