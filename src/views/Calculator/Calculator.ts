@@ -52,7 +52,6 @@ export class Calculator extends KKWebComponent {
         this.setUpElements();
         const lexicalAnalyzer: LexicalAnalyzer = LexicalAnalyzer.new();
         lexicalAnalyzer.change_expression();
-        console.log(lexicalAnalyzer.expression());
     }
 
     protected setUpElements(): void {
