@@ -1,9 +1,12 @@
 #!/bin/sh
-all_files_to_commit=$(git diff --name-only --cached)
+RED="\033[1;31m"
+GREEN="\033[1;32m"
+NC="\033[0m"
 ends_with_ts=".*\.ts$"
 ends_with_scss=".*\.scss$"
 all_ts_files=""
 all_scss_files=""
+all_files_to_commit=$(git diff --name-only --cached)
 for file in $all_files_to_commit
 do
   if echo "$file" | grep "$ends_with_ts"; then
@@ -14,11 +17,12 @@ do
   fi
 done
 ./node_modules/.bin/eslint $all_ts_files --quiet --fix && ./node_modules/.bin/stylelint $all_scss_files --stdin --quiet --fix
+git add -f $all_ts_files $all_scss_files
 if [ $? -ne 0 ]
 then
-  echo Linter errors has occured
+  echo "${RED} ❌ Linter errors has occurred ( ⚈̥̥̥̥̥́⌢⚈̥̥̥̥̥̀ )${NC}"
   exit 1
 else
-  echo Eslint and Stylelint did not find any errors
+  echo "${GREEN} ✔ Eslint and Stylelint did not find any errors ( ◕‿◕ )${NC}"
   exit 0
 fi
