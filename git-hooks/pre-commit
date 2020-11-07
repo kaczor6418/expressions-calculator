@@ -6,6 +6,7 @@ ends_with_ts=".*\.ts$"
 ends_with_scss=".*\.scss$"
 all_ts_files=""
 all_scss_files=""
+linter_exit_code=1
 all_files_to_commit=$(git diff --name-only --cached)
 for file in $all_files_to_commit
 do
@@ -17,8 +18,9 @@ do
   fi
 done
 ./node_modules/.bin/eslint $all_ts_files --quiet --fix && ./node_modules/.bin/stylelint $all_scss_files --stdin --quiet --fix
+linter_exit_code=$?
 git add -f $all_ts_files $all_scss_files
-if [ $? -ne 0 ]
+if [ $linter_exit_code -ne 0 ]
 then
   echo "${RED} ❌ Linter errors has occurred ( ⚈̥̥̥̥̥́⌢⚈̥̥̥̥̥̀ )${NC}"
   exit 1
