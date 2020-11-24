@@ -3,8 +3,8 @@ RED="\033[1;31m"
 GREEN="\033[1;32m"
 NC="\033[0m"
 linter_exit_code=1
-all_ts_files=$(git diff --name-only --cached | grep ts$)
-all_scss_files=$(git diff --name-only --cached | grep scss$)
+all_ts_files=$(git diff --cached --diff-filter=d --name-only | grep ts$)
+all_scss_files=$(git diff --cached --diff-filter=d --name-only | grep scss$)
 ./node_modules/.bin/eslint $all_ts_files --quiet --fix && ./node_modules/.bin/stylelint $all_scss_files --stdin --quiet --fix
 linter_exit_code=$?
 git add -f $all_ts_files $all_scss_files
